@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="How a paragraph of product intent becomes an approved, machine-consumable Feature Spec.">
+  <title>Feature spec lifecycle · The Anchor Model</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <a href="/ideas/the-anchor-model/">The Anchor Model</a>
+    <span aria-hidden="true">/</span>
+    <span>Feature spec lifecycle</span>
+  </nav>
+
+  <header class="hub-header">
+    <p class="eyebrow">The Anchor Model</p>
+    <h1>Feature spec lifecycle</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+  </header>
+
+  <div class="prose">
+    <h2 id="the-anchor-model-human-owned-ai-assisted-feature-specification-creation">The Anchor Model — Human-Owned, AI-Assisted Feature Specification Creation</h2>
+<p><strong>Status:</strong> Concept Outline<br>
+<strong>Version:</strong> 0.1<br>
+<strong>Purpose:</strong> Preserve the proposed process for converting a lightweight human Feature Request into an approved, machine-consumable Feature Spec.</p>
+<hr>
+<h1 id="1-core-principle">1. Core Principle</h1>
+<p>Feature specification creation should itself follow the Anchor Model.</p>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<p>The Product Manager owns the business and product truth of the feature.</p>
+<p>AI should reduce the clerical burden of specification creation by assembling context, identifying ambiguity, researching dependencies, drafting the specification, and validating it against applicable Anchors.</p>
+<p>The PM should not become a specification clerk.</p>
+<p>The PM should concentrate on:</p>
+<ul>
+<li>What problem are we solving?</li>
+<li>For whom?</li>
+<li>Why does it matter?</li>
+<li>What outcome do we expect?</li>
+<li>Which ambiguities require a human decision?</li>
+</ul>
+<hr>
+<h1 id="2-two-distinct-artifacts">2. Two Distinct Artifacts</h1>
+<h2 id="feature_request">FEATURE_REQUEST</h2>
+<p>A lightweight expression of intent.</p>
+<p>This may be only a paragraph.</p>
+<p>Example:</p>
+<blockquote>
+<p>Customers abandon checkout when identity verification fails. We need a way for them to retry verification without restarting the entire application.</p>
+</blockquote>
+<p>The Feature Request should not require the PM to complete a large template before work can begin.</p>
+<p>Its purpose is to capture intent.</p>
+<hr>
+<h2 id="feature_spec">FEATURE_SPEC</h2>
+<p>The approved delivery contract.</p>
+<p>The Feature Spec is created through an AI-assisted workflow and becomes sufficiently rigorous for downstream orchestration and execution.</p>
+<p>It should contain, as applicable:</p>
+<ul>
+<li>Business value</li>
+<li>Customer/user problem</li>
+<li>Desired behavior</li>
+<li>Acceptance criteria</li>
+<li>Applicable Anchors</li>
+<li>Dependencies</li>
+<li>Risk classification</li>
+<li>Security considerations</li>
+<li>Data considerations</li>
+<li>UX considerations</li>
+<li>Required Guardians</li>
+<li>Required tests</li>
+<li>Required telemetry</li>
+<li>Human gates</li>
+<li>Assumptions</li>
+<li>Resolved decisions</li>
+<li>Remaining approved assumptions</li>
+<li>Explicit non-goals</li>
+</ul>
+<p>The Feature Spec represents one bounded unit of business value.</p>
+<hr>
+<h1 id="3-proposed-lifecycle">3. Proposed Lifecycle</h1>
+<pre><code class="language-text">              PRODUCT / BUSINESS INTENT
+                        |
+                 BRD + PRD Anchors
+                        |
+                        v
+              FEATURE REQUEST / IDEA
+                        |
+                        v
+              FEATURE ORCHESTRATOR
+                        |
+              assembles relevant context
+                        |
+       +----------------+----------------+
+       |                |                |
+       v                v                v
+      PRD          Existing Product    Telemetry /
+   Context            Behavior         Research
+       |                |                |
+       +----------------+----------------+
+                        |
+                        v
+                 DISCOVERY AGENTS
+                        |
+              identify unknowns,
+            dependencies &amp; conflicts
+                        |
+                        v
+                  HUMAN / PM
+              resolves ambiguity
+                        |
+                        v
+                   SPEC AGENT
+                        |
+                        v
+                  FEATURE_SPEC
+                        |
+                        v
+                    GUARDIANS
+          +-------------+-------------+
+          |             |             |
+          v             v             v
+       Product          UX          Risk
+      Guardian       Guardian      Guardian
+          |             |             |
+          +-------------+-------------+
+                        |
+                        v
+                 SPEC QA REPORT
+                        |
+                 +------+------+
+                 |             |
+              Issues          Ready
+                 |             |
+                 v             v
+              Revise       HUMAN GATE
+                               |
+                               v
+                         PM APPROVES
+                               |
+                               v
+                    APPROVED FEATURE_SPEC
+                               |
+                               v
+                    DELIVERY ORCHESTRATOR
+</code></pre>
+<hr>
+<h1 id="4-stage-1-feature-request">4. Stage 1 — Feature Request</h1>
+<p><strong>Owner:</strong> Product<br>
+<strong>Authorship:</strong> Human, optionally AI-assisted</p>
+<p>The PM provides the smallest useful description of the desired business value.</p>
+<p>The system should not force premature specification.</p>
+<p>A Feature Request should normally identify:</p>
+<ul>
+<li>Problem or opportunity</li>
+<li>Target customer/user</li>
+<li>Desired outcome</li>
+<li>Why it matters</li>
+</ul>
+<p>The Feature Request may intentionally contain unresolved details.</p>
+<hr>
+<h1 id="5-stage-2-context-assembly">5. Stage 2 — Context Assembly</h1>
+<p><strong>Owner:</strong> Feature Orchestrator<br>
+<strong>Execution:</strong> AI agents/tools</p>
+<p>Before drafting a specification, the Orchestrator gathers relevant organizational context.</p>
+<p>Potential sources include:</p>
+<ul>
+<li>BRD</li>
+<li>PRD</li>
+<li>Existing Feature Specs</li>
+<li>Product behavior</li>
+<li>Product telemetry</li>
+<li>Customer research</li>
+<li>UX/UI Anchors</li>
+<li>Architecture Anchors</li>
+<li>Stack Anchors</li>
+<li>Security Anchors</li>
+<li>Risk Anchors</li>
+<li>Data Governance Anchors</li>
+<li>Previous exceptions</li>
+<li>Architecture Decision Records</li>
+<li>Relevant production incidents</li>
+</ul>
+<p>The goal is:</p>
+<blockquote>
+<p><strong>Bring the organization's existing knowledge to the feature rather than requiring the PM to manually find it.</strong></p>
+</blockquote>
+<hr>
+<h1 id="6-stage-3-discovery">6. Stage 3 — Discovery</h1>
+<p><strong>Execution:</strong> Discovery Agents</p>
+<p>Discovery Agents inspect the Feature Request and assembled context.</p>
+<p>They identify:</p>
+<ul>
+<li>Missing information</li>
+<li>Contradictions</li>
+<li>Dependencies</li>
+<li>Existing capabilities</li>
+<li>Potential reuse</li>
+<li>Relevant Anchors</li>
+<li>Product ambiguity</li>
+<li>Security implications</li>
+<li>Risk implications</li>
+<li>Data implications</li>
+<li>UX implications</li>
+<li>Technical constraints</li>
+</ul>
+<p>Agents should distinguish between:</p>
+<ol>
+<li>Questions they can resolve from organizational evidence.</li>
+<li>Questions requiring human judgment.</li>
+</ol>
+<hr>
+<h1 id="7-stage-4-open-questions">7. Stage 4 — Open Questions</h1>
+<p>AI must not silently invent business truth.</p>
+<p>When an important ambiguity cannot be resolved from authoritative context, create an explicit Open Question.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">question_id: FQ-003
+question: &quot;How long should an incomplete identity verification session remain resumable?&quot;
+impact:
+  - customer experience
+  - data retention
+  - security
+recommended_owner: Product
+status: unresolved
+</code></pre>
+<p>The system should consolidate questions and avoid overwhelming the PM with low-value decisions.</p>
+<p>Only material ambiguity should require human attention.</p>
+<hr>
+<h1 id="8-stage-5-human-resolution">8. Stage 5 — Human Resolution</h1>
+<p><strong>Owner:</strong> Product or appropriate human authority</p>
+<p>Humans resolve questions involving organizational truth.</p>
+<p>Examples:</p>
+<ul>
+<li>Desired customer behavior</li>
+<li>Business policy</li>
+<li>Product tradeoffs</li>
+<li>Risk tolerance</li>
+<li>Scope</li>
+<li>Priority</li>
+<li>Customer promises</li>
+</ul>
+<p>The responsible human may delegate factual research to AI, but retains decision authority.</p>
+<p>Resolved decisions become part of the Feature Spec provenance.</p>
+<hr>
+<h1 id="9-stage-6-feature-spec-draft">9. Stage 6 — Feature Spec Draft</h1>
+<p><strong>Execution:</strong> Spec Agent<br>
+<strong>Owner:</strong> Product</p>
+<p>The Spec Agent converts:</p>
+<pre><code class="language-text">Feature Request
++
+Applicable Anchors
++
+Organizational Context
++
+Discovery Findings
++
+Human Decisions
+</code></pre>
+<p>into a structured Feature Spec.</p>
+<p>The Spec Agent may author the representation.</p>
+<p>Product owns its truth.</p>
+<hr>
+<h1 id="10-stage-7-pre-implementation-guardian-review">10. Stage 7 — Pre-Implementation Guardian Review</h1>
+<p>Guardian review begins before code exists.</p>
+<p>Applicable Guardians inspect the proposed Feature Spec.</p>
+<p>Potential Guardians include:</p>
+<ul>
+<li>Product Guardian</li>
+<li>UX Guardian</li>
+<li>Architecture Guardian</li>
+<li>Stack Guardian</li>
+<li>Security Guardian</li>
+<li>Risk Guardian</li>
+<li>Data Guardian</li>
+</ul>
+<p>Not every feature should invoke every Guardian.</p>
+<p>The Feature Orchestrator should select Guardians based on scope and risk.</p>
+<hr>
+<h1 id="11-example-guardian-discovery">11. Example Guardian Discovery</h1>
+<p>A Security Guardian may determine:</p>
+<blockquote>
+<p>This feature persists identity-verification state. SECURITY-014 and DATA-022 apply.</p>
+</blockquote>
+<p>An Architecture Guardian may determine:</p>
+<blockquote>
+<p>This capability crosses the Identity and Application domains. ARCH-031 applies.</p>
+</blockquote>
+<p>A Risk Guardian may determine:</p>
+<blockquote>
+<p>Failed identity verification is part of a fraud-control boundary. Human Risk review is required.</p>
+</blockquote>
+<p>These findings become part of the Feature Spec before implementation begins.</p>
+<hr>
+<h1 id="12-stage-8-spec-qa">12. Stage 8 — Spec QA</h1>
+<p>Guardian findings are consolidated into a Spec QA Report.</p>
+<p>The report should distinguish:</p>
+<ul>
+<li>Blocking issues</li>
+<li>Required clarification</li>
+<li>Recommendations</li>
+<li>Informational findings</li>
+<li>Applicable Anchor references</li>
+<li>Required human gates</li>
+</ul>
+<p>The system should avoid presenting developers or PMs with dozens of redundant AI findings.</p>
+<p>Findings should be deduplicated and prioritized.</p>
+<hr>
+<h1 id="13-stage-9-revision">13. Stage 9 — Revision</h1>
+<p>If material issues remain:</p>
+<pre><code class="language-text">SPEC QA
+   |
+   v
+REVISION
+   |
+   +--&gt; AI-resolvable issue -&gt; Agent resolves
+   |
+   +--&gt; Human decision -&gt; Human resolves
+   |
+   +--&gt; Anchor conflict -&gt; Anchor owner / exception workflow
+</code></pre>
+<p>The Feature Spec should iterate until it is sufficiently complete for execution.</p>
+<hr>
+<h1 id="14-stage-10-product-approval">14. Stage 10 — Product Approval</h1>
+<p><strong>Human Gate</strong></p>
+<p>Product approves the Feature Spec.</p>
+<p>Approval means:</p>
+<blockquote>
+<p>This artifact accurately represents the business value and product behavior we intend to deliver.</p>
+</blockquote>
+<p>It does not mean Product certifies every technical implementation detail.</p>
+<p>Once approved, the Feature Spec becomes the authoritative delivery contract for that unit of value.</p>
+<hr>
+<h1 id="15-stage-11-handoff-to-delivery-orchestrator">15. Stage 11 — Handoff to Delivery Orchestrator</h1>
+<p>The approved Feature Spec is passed to the Delivery Orchestrator.</p>
+<p>The Delivery Orchestrator should receive:</p>
+<pre><code class="language-text">Business value
+User behavior
+Acceptance criteria
+Relevant Anchors
+Dependencies
+Risk classification
+Required Guardians
+Required tests
+Required telemetry
+Human gates
+Resolved decisions
+Assumptions
+Explicit non-goals
+</code></pre>
+<p>The Delivery Orchestrator then determines how the work should be implemented and verified.</p>
+<hr>
+<h1 id="16-risk-adaptive-guardian-selection">16. Risk-Adaptive Guardian Selection</h1>
+<p>Guardian invocation should be proportional to the change.</p>
+<p>Example:</p>
+<h2 id="copy-change">Copy Change</h2>
+<pre><code class="language-text">Product Guardian
+UX Guardian
+</code></pre>
+<h2 id="new-api-endpoint">New API Endpoint</h2>
+<pre><code class="language-text">Product Guardian
+Architecture Guardian
+Security Guardian
+</code></pre>
+<h2 id="customer-pii-pipeline">Customer PII Pipeline</h2>
+<pre><code class="language-text">Product Guardian
+Architecture Guardian
+Security Guardian
+Risk Guardian
+Data Guardian
+</code></pre>
+<h2 id="authentication-platform-change">Authentication Platform Change</h2>
+<pre><code class="language-text">Product Guardian
+Architecture Guardian
+Stack Guardian
+Security Guardian
+Risk Guardian
+Data Guardian
+UX Guardian
++
+Mandatory Human Gates
+</code></pre>
+<p>The goal is high assurance without recreating enterprise bureaucracy through AI.</p>
+<hr>
+<h1 id="17-feature-spec-as-contract">17. Feature Spec as Contract</h1>
+<p>Once approved, the Feature Spec should become the primary contract between Product intent and delivery execution.</p>
+<p>It should be usable by:</p>
+<ul>
+<li>Delivery Orchestrators</li>
+<li>Coding Agents</li>
+<li>Engineers</li>
+<li>Test Agents</li>
+<li>Guardian Agents</li>
+<li>CI/CD systems</li>
+<li>Human reviewers</li>
+<li>Production verification systems</li>
+</ul>
+<p>This makes the Feature Spec more than documentation.</p>
+<p>It becomes machine-consumable execution context.</p>
+<hr>
+<h1 id="18-traceability">18. Traceability</h1>
+<p>A completed feature should eventually be traceable:</p>
+<pre><code class="language-text">BRD
+ |
+PRD
+ |
+FEATURE_REQUEST
+ |
+Human Decisions
+ |
+FEATURE_SPEC
+ |
+Applicable Anchors
+ |
+Implementation
+ |
+Guardian Findings
+ |
+Exceptions
+ |
+Tests
+ |
+Deployment
+ |
+Telemetry
+</code></pre>
+<p>This creates an evidence chain from business intent to production outcome.</p>
+<hr>
+<h1 id="19-recursive-property-of-the-anchor-model">19. Recursive Property of the Anchor Model</h1>
+<p>Feature Spec creation is itself an implementation of the Anchor Model.</p>
+<pre><code class="language-text">FEATURE_REQUEST
+       |
+       v
+   ORCHESTRATOR
+       |
+       v
+     AGENTS
+       |
+       v
+   GUARDIANS
+       |
+       v
+     HUMAN
+       |
+       v
+FEATURE_SPEC
+</code></pre>
+<p>This follows the same core architecture used for delivery:</p>
+<blockquote>
+<p><strong>Anchors define.<br>
+Orchestrators direct.<br>
+Agents execute.<br>
+Guardians verify.<br>
+Humans decide.</strong></p>
+</blockquote>
+<p>The Anchor Model therefore governs not only how software is created, but how the instructions for creating software are themselves produced.</p>
+<hr>
+<h1 id="20-design-principle-minimize-product-clerical-work">20. Design Principle: Minimize Product Clerical Work</h1>
+<p>The Feature Spec workflow should not turn Product Managers into template administrators.</p>
+<p>A successful implementation should allow a PM to begin with something as simple as:</p>
+<blockquote>
+<p>"Customers abandon checkout when identity verification fails. We need a way for them to retry without restarting the application."</p>
+</blockquote>
+<p>The system should perform the heavy lifting required to turn that intent into a rigorous delivery artifact.</p>
+<p>Human attention should be reserved for questions where human authority, judgment, strategy, or organizational truth actually matter.</p>
+<hr>
+<h1 id="21-design-principle-ai-must-expose-uncertainty">21. Design Principle: AI Must Expose Uncertainty</h1>
+<p>AI should not silently convert uncertainty into specification.</p>
+<p>When evidence is insufficient:</p>
+<pre><code class="language-text">UNKNOWN
+   |
+   +--&gt; Researchable? -&gt; Research
+   |
+   +--&gt; Human truth? -&gt; Ask owner
+   |
+   +--&gt; Technical decision? -&gt; Delivery/Architecture
+   |
+   +--&gt; Policy conflict? -&gt; Anchor owner
+</code></pre>
+<p>Explicit uncertainty is preferable to fabricated precision.</p>
+<hr>
+<h1 id="22-design-principle-specification-before-expensive-execution">22. Design Principle: Specification Before Expensive Execution</h1>
+<p>The organization should resolve inexpensive ambiguity before expensive implementation.</p>
+<p>AI makes specification analysis cheap.</p>
+<p>Use that advantage.</p>
+<p>The objective is to detect:</p>
+<ul>
+<li>product ambiguity;</li>
+<li>architectural conflict;</li>
+<li>security requirements;</li>
+<li>risk concerns;</li>
+<li>data obligations;</li>
+<li>UX conflicts;</li>
+</ul>
+<p>before significant code is generated.</p>
+<hr>
+<h1 id="23-future-work">23. Future Work</h1>
+<p>This outline intentionally leaves several questions open for later design:</p>
+<ul>
+<li>Formal Feature Spec schema</li>
+<li>Feature Request schema</li>
+<li>Open Question schema</li>
+<li>Guardian finding schema</li>
+<li>Spec QA schema</li>
+<li>Risk classification algorithm</li>
+<li>Anchor discovery mechanism</li>
+<li>Context retrieval strategy</li>
+<li>Versioning</li>
+<li>Approval provenance</li>
+<li>Jira/ADO/GitHub integration</li>
+<li>Model-routing policy</li>
+<li>Agent identity and permissions</li>
+<li>Audit logging</li>
+<li>Exception workflow integration</li>
+<li>Metrics</li>
+</ul>
+<p>These should be developed through a reference implementation rather than prematurely specified.</p>
+<hr>
+<h1 id="24-working-thesis">24. Working Thesis</h1>
+<p>The traditional workflow often expects humans to translate business intent into increasingly detailed documentation before implementation can begin.</p>
+<p>The Anchor Model proposes a different division of labor:</p>
+<blockquote>
+<p><strong>Humans express and own intent. AI gathers context, exposes ambiguity, authors the specification, and verifies it against organizational Anchors. Humans resolve the decisions that require human truth.</strong></p>
+</blockquote>
+<p>The result is an approved Feature Spec that can serve as a machine-consumable contract for AI-assisted delivery.</p>
+<hr>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

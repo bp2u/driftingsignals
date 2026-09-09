@@ -26,9 +26,9 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 - Light and dark themes with a header toggle and `prefers-color-scheme` default
 - `run.py` for PyCharm / local debug
 - `wsgi.py` + gunicorn / Docker for a Python process
-- `freeze.py` (Frozen-Flask) writing static files to `build/`
-- `wrangler.jsonc` for Cloudflare Workers static assets: freeze, then upload `build/`
-- GitHub repo `bp2u/driftingsignals` as the deploy source
+- `freeze.py` (Frozen-Flask) writing static files to `build/`; commit `build/` so Cloudflare only uploads assets
+- `wrangler.jsonc` for Cloudflare Workers static assets pointing at `build/`
+- GitHub repo `bp2u/driftingsignals` as the deploy source; do not commit `.python-version` (Cloudflare would reinstall Python every build)
 
 ## Dependencies
 

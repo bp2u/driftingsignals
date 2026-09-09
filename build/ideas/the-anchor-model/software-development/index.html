@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="The first reference implementation: BRD/PRD anchors, feature specs, guardians, and a risk-adaptive SDLC.">
+  <title>Software development · The Anchor Model</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <a href="/ideas/the-anchor-model/">The Anchor Model</a>
+    <span aria-hidden="true">/</span>
+    <span>Software development</span>
+  </nav>
+
+  <header class="hub-header">
+    <p class="eyebrow">The Anchor Model</p>
+    <h1>Software development</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+  </header>
+
+  <div class="prose">
+    <h2 id="applying-human-governed-ai-orchestration-to-the-sdlc">Applying Human-Governed AI Orchestration to the SDLC</h2>
+<p><strong>White Paper — Version 1.0</strong></p>
+<blockquote>
+<p><strong>This paper describes the software-development implementation of the broader Anchor Model: an organizational architecture for AI-enabled work.</strong></p>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<p><strong>Operating vocabulary:</strong> Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</p>
+<h3 id="abstract">Abstract</h3>
+<p>AI coding systems are rapidly reducing the cost of software implementation. As execution becomes cheaper and faster, a different constraint becomes dominant: maintaining alignment with business intent, product outcomes, user experience, architecture, security, risk, data governance, and approved technology patterns.</p>
+<p>The Anchor Model is a company-wide software development lifecycle designed for this environment. It treats durable, human-owned documents as machine-consumable <strong>anchors</strong>; treats feature specifications as bounded units of business value; uses an <strong>orchestration layer</strong> to move work through the appropriate controls; allows AI agents and small engineering teams to execute rapidly; continuously detects <strong>drift</strong> from organizational intent; and provides an explicit <strong>exception mechanism</strong> through which better patterns can be proposed rather than suppressed.</p>
+<p>The central principle is:</p>
+<blockquote>
+<p><strong>Humans own truth and accountability. AI may author, execute, verify, and recommend.</strong></p>
+</blockquote>
+<p>The result is not a fully autonomous SDLC. It is a high-velocity, human-governed system in which organizational intent becomes continuously executable.</p>
+<hr>
+<h1 id="1-the-shift-in-the-software-bottleneck">1. The Shift in the Software Bottleneck</h1>
+<p>Traditional software organizations were built around the assumption that implementation capacity was scarce. Product teams prioritized backlogs, engineering teams converted requirements into code, specialists reviewed the work, and delivery cadence was constrained by the number of engineers available to design, implement, test, and integrate software.</p>
+<p>AI changes that assumption.</p>
+<p>A small team of two or three engineers equipped with capable coding agents can increasingly perform work that once required a substantially larger delivery team. Code generation, refactoring, testing, documentation, analysis, and routine implementation can all be accelerated.</p>
+<p>But faster implementation creates a new problem.</p>
+<p>If software can be produced faster than an organization can communicate and enforce its intent, the organization does not necessarily get better software. It gets <strong>faster drift</strong>.</p>
+<p>A coding agent can produce a technically valid implementation that:</p>
+<ul>
+<li>solves the wrong business problem;</li>
+<li>violates the intended product behavior;</li>
+<li>introduces an inconsistent user experience;</li>
+<li>bypasses sanctioned architecture;</li>
+<li>introduces an unsupported technology;</li>
+<li>weakens security controls;</li>
+<li>exceeds organizational risk appetite;</li>
+<li>mishandles governed data;</li>
+<li>or creates operational debt that is invisible at feature completion.</li>
+</ul>
+<p>The scarce resource therefore shifts.</p>
+<blockquote>
+<p><strong>As the marginal cost of implementation falls, alignment becomes the scarce resource.</strong></p>
+</blockquote>
+<p>The Anchor Model is designed around that shift.</p>
+<hr>
+<h1 id="2-from-documentation-to-executable-intent">2. From Documentation to Executable Intent</h1>
+<p>Most enterprises already have requirements, architecture standards, design systems, security policies, technology standards, and risk controls.</p>
+<p>The problem is not the absence of documentation.</p>
+<p>The problem is that traditional documentation is passive.</p>
+<p>A document is written. It is published. Humans are expected to remember that it exists, determine whether it applies, interpret it correctly, and enforce it during delivery. Over time, documents become stale and implementations diverge.</p>
+<p>AI changes the economics of documentation because a machine-readable document can become an active participant in delivery.</p>
+<p>An architecture standard can be supplied directly to an architecture-review agent. A UX guideline can be evaluated against generated UI. A security policy can become context for a security guardian. A PRD can be used to test whether a completed feature still serves the intended product outcome.</p>
+<p>The document is no longer merely a reference.</p>
+<p>It becomes an <strong>anchor</strong>.</p>
+<p>An anchor is a durable, human-owned representation of organizational truth against which work can be planned, executed, and continuously evaluated.</p>
+<hr>
+<h1 id="3-the-anchor-hierarchy">3. The Anchor Hierarchy</h1>
+<p>The Anchor Model separates durable organizational intent from individual units of execution.</p>
+<p>A representative hierarchy is:</p>
+<pre><code class="language-text">                         BUSINESS INTENT
+                              |
+                             BRD
+                              |
+                             PRD
+                              |
+                     DELIVERY ORCHESTRATION
+                              |
+                          FEATURE SPEC
+                              |
+       +-----------+----------+----------+-----------+
+       |           |          |          |           |
+ ARCHITECTURE     UX/UI      STACK    SECURITY      RISK
+    ANCHOR        ANCHOR     ANCHOR     ANCHOR      ANCHOR
+       |           |          |          |           |
+       +-----------+----------+-----+----+-----------+
+                                  |
+                              DATA ANCHOR
+                                  |
+                         AI + ENGINEERS
+                                  |
+                              VERIFICATION
+                                  |
+                            DRIFT DETECTION
+                                  |
+                       EXCEPTION / CONFORMANCE
+</code></pre>
+<p>The exact physical representation may be Markdown, structured YAML, a policy service, a design-system repository, or another machine-readable format. The important concept is ownership and authority, not the file extension.</p>
+<h2 id="31-business-requirements-document-brd">3.1 Business Requirements Document — BRD</h2>
+<p><strong>Owner:</strong> Business/Product leadership</p>
+<p>The BRD anchors why the organization is investing.</p>
+<p>It should define:</p>
+<ul>
+<li>business problem;</li>
+<li>strategic context;</li>
+<li>target outcomes;</li>
+<li>measurable business value;</li>
+<li>constraints;</li>
+<li>major stakeholders;</li>
+<li>economic rationale;</li>
+<li>regulatory or market drivers.</li>
+</ul>
+<p>The BRD should change less frequently than individual feature specifications.</p>
+<h2 id="32-product-requirements-document-prd">3.2 Product Requirements Document — PRD</h2>
+<p><strong>Owner:</strong> Product</p>
+<p>The PRD anchors what product outcome must exist.</p>
+<p>It should define:</p>
+<ul>
+<li>customer problem;</li>
+<li>target users;</li>
+<li>product behavior;</li>
+<li>success measures;</li>
+<li>scope and non-scope;</li>
+<li>product principles;</li>
+<li>key constraints;</li>
+<li>major capabilities;</li>
+<li>dependencies;</li>
+<li>product-level acceptance.</li>
+</ul>
+<p>The PRD is not a backlog. It is the durable product truth from which bounded units of value are derived.</p>
+<h2 id="33-uxui-anchor">3.3 UX/UI Anchor</h2>
+<p><strong>Owner:</strong> UX/Design</p>
+<p>The UX/UI anchor defines sanctioned experience patterns.</p>
+<p>It may include:</p>
+<ul>
+<li>design-system usage;</li>
+<li>interaction patterns;</li>
+<li>accessibility requirements;</li>
+<li>content and voice standards;</li>
+<li>component guidance;</li>
+<li>responsive behavior;</li>
+<li>research-backed experience principles.</li>
+</ul>
+<h2 id="34-architecture-anchor">3.4 Architecture Anchor</h2>
+<p><strong>Owner:</strong> Enterprise/Solution Architecture</p>
+<p>The architecture anchor defines sanctioned structural patterns and boundaries.</p>
+<p>It may include:</p>
+<ul>
+<li>reference architectures;</li>
+<li>domain boundaries;</li>
+<li>integration patterns;</li>
+<li>eventing patterns;</li>
+<li>API standards;</li>
+<li>resilience expectations;</li>
+<li>service ownership;</li>
+<li>approved architectural decision patterns.</li>
+</ul>
+<h2 id="35-stack-anchor">3.5 Stack Anchor</h2>
+<p><strong>Owner:</strong> Engineering/Platform, often in partnership with Architecture</p>
+<p>The stack anchor defines sanctioned implementation technologies and operational conventions.</p>
+<p>It may include:</p>
+<ul>
+<li>languages and versions;</li>
+<li>frameworks;</li>
+<li>databases;</li>
+<li>cloud services;</li>
+<li>build systems;</li>
+<li>observability tools;</li>
+<li>dependency policies;</li>
+<li>deployment patterns;</li>
+<li>supported libraries.</li>
+</ul>
+<p>Architecture governs structural intent. Stack governs approved implementation choices. They overlap, but they are not identical.</p>
+<h2 id="36-security-anchor">3.6 Security Anchor</h2>
+<p><strong>Owner:</strong> Security</p>
+<p>Security is a first-order anchor, not a downstream checklist.</p>
+<p>It should encode:</p>
+<ul>
+<li>authentication and authorization standards;</li>
+<li>secrets management;</li>
+<li>encryption requirements;</li>
+<li>secure coding requirements;</li>
+<li>threat-model triggers;</li>
+<li>vulnerability expectations;</li>
+<li>supply-chain controls;</li>
+<li>logging and audit requirements;</li>
+<li>security review thresholds.</li>
+</ul>
+<h2 id="37-risk-anchor">3.7 Risk Anchor</h2>
+<p><strong>Owner:</strong> Risk</p>
+<p>Risk is distinct from security.</p>
+<p>Security asks whether systems are adequately protected. Risk asks whether the aggregate exposure created by a change is acceptable to the organization.</p>
+<p>The risk anchor may govern:</p>
+<ul>
+<li>operational risk;</li>
+<li>model risk;</li>
+<li>regulatory risk;</li>
+<li>third-party risk;</li>
+<li>reputational risk;</li>
+<li>customer-impact thresholds;</li>
+<li>financial exposure;</li>
+<li>control requirements;</li>
+<li>escalation thresholds.</li>
+</ul>
+<h2 id="38-data-governance-anchor">3.8 Data Governance Anchor</h2>
+<p><strong>Owner:</strong> Data Governance / Data Architecture</p>
+<p>The data anchor governs:</p>
+<ul>
+<li>data classification;</li>
+<li>retention;</li>
+<li>lineage;</li>
+<li>residency;</li>
+<li>quality;</li>
+<li>ownership;</li>
+<li>PII handling;</li>
+<li>data contracts;</li>
+<li>permitted use;</li>
+<li>model-training restrictions;</li>
+<li>deletion requirements.</li>
+</ul>
+<hr>
+<h1 id="4-ownership-is-not-authorship">4. Ownership Is Not Authorship</h1>
+<p>The Anchor Model deliberately separates ownership from authorship.</p>
+<blockquote>
+<p><strong>AI can write the document. The human owner remains accountable for its truth.</strong></p>
+</blockquote>
+<p>A Product Manager may use an AI workflow to produce most of a PRD. Product still owns the PRD.</p>
+<p>An architecture agent may draft an updated reference pattern. Architecture owns the approved pattern.</p>
+<p>A security agent may propose new controls based on recurring findings. Security owns the resulting security anchor.</p>
+<p>An AI coding assistant may generate most of a feature. Engineering owns the implementation.</p>
+<p>This distinction becomes increasingly important as AI contribution rises. Measuring who typed an artifact becomes less useful. Knowing who has authority to approve its meaning becomes more important.</p>
+<hr>
+<h1 id="5-the-feature-specification-the-unit-of-business-value">5. The Feature Specification: The Unit of Business Value</h1>
+<p>The Feature Spec is the primary unit of delivery.</p>
+<p>It is similar in scale to a well-formed agile story or small feature, but is designed to be sufficiently complete for AI-assisted execution.</p>
+<p><strong>Owner:</strong> Product, human-owned and AI-assisted.</p>
+<p>A Feature Spec should define one coherent piece of business value and include:</p>
+<ul>
+<li>problem or opportunity;</li>
+<li>user/business value;</li>
+<li>desired behavior;</li>
+<li>acceptance criteria;</li>
+<li>relevant constraints;</li>
+<li>affected personas;</li>
+<li>telemetry expectations;</li>
+<li>non-functional requirements where known;</li>
+<li>links to applicable anchors;</li>
+<li>known dependencies;</li>
+<li>explicit non-goals.</li>
+</ul>
+<p>The Feature Spec should say <strong>what value is being delivered</strong>, not prescribe implementation unless implementation itself is part of the requirement.</p>
+<p>AI can assist in transforming a Product Manager's rough intent into a complete Feature Spec, but the Product Manager approves the final artifact.</p>
+<hr>
+<h1 id="6-orchestration-the-executable-delivery-contract">6. Orchestration: The Executable Delivery Contract</h1>
+<p>Anchors alone are insufficient.</p>
+<p>The organization also needs to define how a unit of work moves through them.</p>
+<p>This is the role of <strong>delivery orchestration</strong>.</p>
+<p>The orchestration artifact is an executable description of the development lifecycle for a product or product family.</p>
+<p>It answers:</p>
+<ul>
+<li>Which anchors apply?</li>
+<li>Which agents or humans participate?</li>
+<li>Which steps are deterministic?</li>
+<li>Which steps may use inexpensive AI?</li>
+<li>Which require frontier reasoning?</li>
+<li>Which require human approval?</li>
+<li>What evidence must be produced?</li>
+<li>What constitutes a blocking failure?</li>
+<li>When is an exception allowed?</li>
+<li>What artifacts must exist before deployment?</li>
+<li>What must be observed after deployment?</li>
+</ul>
+<p>A representative flow is:</p>
+<pre><code class="language-text">Feature Spec
+    |
+Context Assembly
+    |
+Architecture / Security / Risk Classification
+    |
+Implementation Plan
+    |
+Human Gate (when required)
+    |
+AI-Assisted Implementation
+    |
+Automated Tests
+    |
+Guardian Reviews
+    |
+Drift Assessment
+    |
+Exception Resolution if needed
+    |
+Human Gate (risk-adaptive)
+    |
+Deployment
+    |
+Production Verification
+    |
+Telemetry and Learning
+</code></pre>
+<h2 id="61-product-ownership-of-orchestration">6.1 Product Ownership of Orchestration</h2>
+<p>The team that owns the PRD should own the <strong>orchestration policy</strong> because orchestration ultimately determines whether delivery remains attached to product intent.</p>
+<p>This does not mean Product owns every technical mechanism.</p>
+<p>A useful division is:</p>
+<p><strong>Product owns:</strong><br>
+- required outcomes;<br>
+- lifecycle policy;<br>
+- product acceptance;<br>
+- required gates;<br>
+- evidence expectations;<br>
+- completion criteria;<br>
+- escalation expectations.</p>
+<p><strong>Engineering/Platform owns:</strong><br>
+- CI/CD implementation;<br>
+- coding-agent integration;<br>
+- test infrastructure;<br>
+- policy execution machinery;<br>
+- repository automation;<br>
+- telemetry pipelines;<br>
+- model/tool integration.</p>
+<p><strong>Anchor owners own:</strong><br>
+- their respective standards;<br>
+- severity definitions;<br>
+- exceptions;<br>
+- changes to their anchors.</p>
+<p>This preserves product accountability without turning Product into the owner of technical tooling.</p>
+<hr>
+<h1 id="7-risk-adaptive-orchestration">7. Risk-Adaptive Orchestration</h1>
+<p>Not every feature requires the same process.</p>
+<p>A copy change should not move through the same controls as a new authentication mechanism.</p>
+<p>The orchestration layer should classify work and dynamically activate the appropriate controls.</p>
+<p>Examples:</p>
+<h3 id="low-risk-ui-copy-change">Low-risk UI copy change</h3>
+<ul>
+<li>Product validation</li>
+<li>UX/content validation</li>
+<li>automated tests</li>
+<li>lightweight human review</li>
+</ul>
+<h3 id="new-database-field-containing-customer-information">New database field containing customer information</h3>
+<ul>
+<li>Product</li>
+<li>Architecture</li>
+<li>Security</li>
+<li>Risk</li>
+<li>Data Governance</li>
+<li>migration testing</li>
+<li>retention/lineage checks</li>
+</ul>
+<h3 id="new-authentication-mechanism">New authentication mechanism</h3>
+<ul>
+<li>Architecture</li>
+<li>Security</li>
+<li>Risk</li>
+<li>threat modeling</li>
+<li>integration testing</li>
+<li>mandatory human security approval</li>
+<li>production monitoring</li>
+</ul>
+<p>This makes governance proportional rather than bureaucratic.</p>
+<hr>
+<h1 id="8-small-human-teams-large-ai-execution-capacity">8. Small Human Teams, Large AI Execution Capacity</h1>
+<p>A central operating hypothesis of the Anchor Model is that a feature team may increasingly consist of only two or three engineers supported by AI coding systems.</p>
+<p>The humans provide:</p>
+<ul>
+<li>engineering judgment;</li>
+<li>decomposition;</li>
+<li>technical accountability;</li>
+<li>review;</li>
+<li>debugging;</li>
+<li>exception reasoning;</li>
+<li>operational ownership.</li>
+</ul>
+<p>AI systems provide scalable execution capacity for:</p>
+<ul>
+<li>code generation;</li>
+<li>test generation;</li>
+<li>refactoring;</li>
+<li>repository exploration;</li>
+<li>documentation;</li>
+<li>static analysis;</li>
+<li>migration assistance;</li>
+<li>routine debugging;</li>
+<li>implementation planning.</li>
+</ul>
+<p>The goal is not to remove engineers from the loop.</p>
+<p>The goal is to change their leverage.</p>
+<p>A small engineering team becomes responsible for directing, validating, and owning a much larger effective implementation capacity.</p>
+<hr>
+<h1 id="9-guardian-agents-and-continuous-drift-detection">9. Guardian Agents and Continuous Drift Detection</h1>
+<p>Traditional review is episodic. The Anchor Model makes alignment continuous.</p>
+<p>Specialized <strong>guardian agents</strong> evaluate implementation against specific anchors.</p>
+<p>Examples:</p>
+<ul>
+<li>Product Guardian</li>
+<li>Architecture Guardian</li>
+<li>Stack Guardian</li>
+<li>UX Guardian</li>
+<li>Security Guardian</li>
+<li>Risk Guardian</li>
+<li>Data Guardian</li>
+</ul>
+<p>Each guardian should be narrow in mandate.</p>
+<p>It should not decide organizational truth. It should compare implementation with the anchor it represents and produce evidence.</p>
+<p>Representative outputs:</p>
+<pre><code class="language-text">product_drift.md
+architecture_drift.md
+stack_drift.md
+ux_drift.md
+security_drift.md
+risk_drift.md
+data_drift.md
+</code></pre>
+<p>A drift finding should include:</p>
+<ul>
+<li>anchor requirement;</li>
+<li>observed implementation;</li>
+<li>severity;</li>
+<li>evidence;</li>
+<li>likely impact;</li>
+<li>confidence;</li>
+<li>recommended disposition.</li>
+</ul>
+<p>The orchestration layer determines whether a finding blocks delivery.</p>
+<hr>
+<h1 id="10-drift-is-not-automatically-wrong">10. Drift Is Not Automatically Wrong</h1>
+<p>A critical design principle is that divergence from an anchor can mean two different things:</p>
+<ol>
+<li>The implementation has accidentally drifted.</li>
+<li>The implementation has discovered a better approach.</li>
+</ol>
+<p>A mature system must distinguish the two.</p>
+<p>A guardian should therefore not simply command:</p>
+<blockquote>
+<p>"You violated STACK.md. Fix it."</p>
+</blockquote>
+<p>It should report:</p>
+<blockquote>
+<p>"The implementation differs from the sanctioned stack pattern. Determine whether this is accidental drift or an intentional exception."</p>
+</blockquote>
+<p>This prevents governance from freezing innovation.</p>
+<hr>
+<h1 id="11-the-exception-request">11. The Exception Request</h1>
+<p>When a team or coding agent believes a non-sanctioned approach is materially better, it should create an explicit exception artifact.</p>
+<p>Example:</p>
+<pre><code class="language-text">EXCEPTION_REQUEST_0042.md
+</code></pre>
+<p>The request should include:</p>
+<ul>
+<li>applicable anchor;</li>
+<li>sanctioned approach;</li>
+<li>proposed alternative;</li>
+<li>reason for divergence;</li>
+<li>expected benefit;</li>
+<li>risks;</li>
+<li>security implications;</li>
+<li>operational implications;</li>
+<li>migration implications;</li>
+<li>cost;</li>
+<li>evidence or benchmarks;</li>
+<li>whether the exception is temporary or strategic;</li>
+<li>recommended disposition.</li>
+</ul>
+<p>The owning anchor team evaluates the request.</p>
+<p>Possible outcomes:</p>
+<h3 id="reject">Reject</h3>
+<p>The implementation must conform to the existing anchor.</p>
+<h3 id="approve-one-time-exception">Approve one-time exception</h3>
+<p>The implementation may proceed, but the anchor remains unchanged.</p>
+<h3 id="approve-and-evolve-the-anchor">Approve and evolve the anchor</h3>
+<p>The alternative is judged superior enough that the organization's sanctioned pattern should change.</p>
+<p>This creates a governed path for bottom-up innovation.</p>
+<hr>
+<h1 id="12-anchors-must-evolve">12. Anchors Must Evolve</h1>
+<p>An anchor that cannot change becomes a constraint on learning.</p>
+<p>The Anchor Model therefore treats anchors as versioned, governed artifacts.</p>
+<p>Changes should include:</p>
+<ul>
+<li>owner;</li>
+<li>version;</li>
+<li>effective date;</li>
+<li>rationale;</li>
+<li>impacted systems;</li>
+<li>migration expectations;</li>
+<li>compatibility policy.</li>
+</ul>
+<p>Guardian agents should evaluate work against the appropriate anchor version.</p>
+<p>This also makes architectural and policy change observable rather than implicit.</p>
+<hr>
+<h1 id="13-a-reference-repository-structure">13. A Reference Repository Structure</h1>
+<p>A product repository might contain:</p>
+<pre><code class="language-text">/product
+    BRD.md
+    PRD.md
+    DELIVERY_ORCHESTRATION.md
+
+/anchors
+    UX_UI.md
+    ARCHITECTURE.md
+    STACK.md
+    SECURITY.md
+    RISK.md
+    DATA_GOVERNANCE.md
+
+/features
+    /F-001
+        FEATURE_SPEC.md
+        implementation_plan.md
+        test_evidence.md
+        product_drift.md
+        architecture_drift.md
+        stack_drift.md
+        ux_drift.md
+        security_drift.md
+        risk_drift.md
+        data_drift.md
+        exceptions/
+        delivery_evidence.md
+
+/decisions
+    ADR-001.md
+    ADR-002.md
+
+/exceptions
+    EXCEPTION_REQUEST_0042.md
+
+/telemetry
+    product_metrics.md
+    operational_metrics.md
+</code></pre>
+<p>In a large enterprise, many anchors would be centrally managed and referenced rather than copied into each repository.</p>
+<hr>
+<h1 id="14-human-gates">14. Human Gates</h1>
+<p>Human-in-the-loop should not mean humans manually approve every AI action.</p>
+<p>It should mean humans remain accountable at consequential decision points.</p>
+<p>Examples of human gates include:</p>
+<ul>
+<li>approval of BRD;</li>
+<li>approval of PRD;</li>
+<li>approval of Feature Spec;</li>
+<li>high-risk implementation plan;</li>
+<li>material security/risk exceptions;</li>
+<li>architecture exceptions;</li>
+<li>production release for high-impact changes;</li>
+<li>changes to anchor documents.</li>
+</ul>
+<p>Low-risk, reversible work can move autonomously within policy.</p>
+<p>This creates <strong>bounded autonomy</strong> rather than either extreme: manual bureaucracy or uncontrolled automation.</p>
+<hr>
+<h1 id="15-model-routing-and-economics">15. Model Routing and Economics</h1>
+<p>Not every task requires the most capable AI model.</p>
+<p>An AI-native SDLC should explicitly route work by cost and reasoning requirement.</p>
+<h3 id="lower-cost-models-are-suitable-for">Lower-cost models are suitable for:</h3>
+<ul>
+<li>formatting;</li>
+<li>extraction;</li>
+<li>classification;</li>
+<li>repository summarization;</li>
+<li>first-pass documentation;</li>
+<li>test scaffolding;</li>
+<li>routine code transformations;</li>
+<li>drift pre-screening;</li>
+<li>metadata.</li>
+</ul>
+<h3 id="frontier-models-should-be-reserved-for">Frontier models should be reserved for:</h3>
+<ul>
+<li>ambiguous requirements;</li>
+<li>architectural reasoning;</li>
+<li>exception evaluation;</li>
+<li>complex security interpretation;</li>
+<li>risk reasoning;</li>
+<li>final product-intent validation;</li>
+<li>conflicting evidence;</li>
+<li>difficult debugging;</li>
+<li>consequential design decisions.</li>
+</ul>
+<h3 id="deterministic-tools-should-remain-authoritative-for">Deterministic tools should remain authoritative for:</h3>
+<ul>
+<li>builds;</li>
+<li>tests;</li>
+<li>static analysis;</li>
+<li>schema validation;</li>
+<li>policy checks;</li>
+<li>calculations;</li>
+<li>dependency scanning;</li>
+<li>reproducible technical assertions.</li>
+</ul>
+<p>The orchestration layer should select the least expensive adequate capability and escalate when confidence or consequence warrants it.</p>
+<hr>
+<h1 id="16-the-drift-control-loop">16. The Drift Control Loop</h1>
+<p>The complete control loop can be summarized as:</p>
+<pre><code class="language-text">Human-owned intent
+      |
+   Anchors
+      |
+Feature Spec
+      |
+Orchestration
+      |
+AI + Human Execution
+      |
+Verification
+      |
+Guardian Agents
+      |
+Drift Findings
+      |
+ +----+----+
+ |         |
+Conform  Intentional
+ |         |
+Fix     Exception Request
+           |
+       Anchor Owner
+       /     |      \
+    Reject  Allow   Evolve Anchor
+       \      |      /
+        \     |     /
+          Delivery
+             |
+          Telemetry
+             |
+           Learning
+             |
+        Better Anchors
+</code></pre>
+<p>This is not a linear SDLC.</p>
+<p>It is a learning system.</p>
+<hr>
+<h1 id="17-preventing-product-drift">17. Preventing Product Drift</h1>
+<p>Product drift deserves special attention.</p>
+<p>Technical systems can remain architecturally compliant while gradually ceasing to solve the intended customer problem.</p>
+<p>A Product Guardian should compare:</p>
+<ul>
+<li>Feature Spec to PRD;</li>
+<li>implementation behavior to Feature Spec;</li>
+<li>telemetry to intended outcome;</li>
+<li>subsequent features to original product principles.</li>
+</ul>
+<p>This gives Product a machine-assisted mechanism for maintaining coherence across hundreds of incremental changes.</p>
+<p>The PRD becomes a living product anchor rather than a launch document that is forgotten after development begins.</p>
+<hr>
+<h1 id="18-security-and-risk-as-continuous-participants">18. Security and Risk as Continuous Participants</h1>
+<p>Security and Risk should not be late-stage approval functions.</p>
+<p>Their anchors should be available during planning and implementation so coding agents can make compliant decisions before code exists.</p>
+<p>Guardian agents then validate those decisions continuously.</p>
+<p>Human specialists become most involved where they add the greatest value:</p>
+<ul>
+<li>novel threats;</li>
+<li>ambiguous controls;</li>
+<li>high-impact exceptions;</li>
+<li>systemic risk;</li>
+<li>changing regulatory interpretation.</li>
+</ul>
+<p>This shifts specialist organizations from repetitive inspection toward higher-value judgment.</p>
+<hr>
+<h1 id="19-evidence-as-a-delivery-artifact">19. Evidence as a Delivery Artifact</h1>
+<p>AI-generated software increases the importance of evidence.</p>
+<p>A completed feature should not merely consist of code.</p>
+<p>It should have a machine-readable evidence package demonstrating:</p>
+<ul>
+<li>which Feature Spec was implemented;</li>
+<li>which anchor versions applied;</li>
+<li>tests executed;</li>
+<li>drift findings;</li>
+<li>exceptions granted;</li>
+<li>human approvals;</li>
+<li>security evidence;</li>
+<li>risk classification;</li>
+<li>deployment result;</li>
+<li>production verification.</li>
+</ul>
+<p>This creates traceability from business intent to production behavior.</p>
+<p>For regulated organizations, that traceability may become one of the model's most valuable properties.</p>
+<hr>
+<h1 id="20-organizational-roles">20. Organizational Roles</h1>
+<p>A simplified ownership model:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact / Capability</th>
+<th>Accountable Owner</th>
+<th>AI Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BRD</td>
+<td>Business/Product</td>
+<td>Draft, analyze, challenge</td>
+</tr>
+<tr>
+<td>PRD</td>
+<td>Product</td>
+<td>Draft, refine, test coherence</td>
+</tr>
+<tr>
+<td>Delivery Orchestration</td>
+<td>Product</td>
+<td>Execute workflow, recommend optimization</td>
+</tr>
+<tr>
+<td>Feature Spec</td>
+<td>Product</td>
+<td>Draft, clarify, validate completeness</td>
+</tr>
+<tr>
+<td>UX/UI Anchor</td>
+<td>UX</td>
+<td>Detect UX drift</td>
+</tr>
+<tr>
+<td>Architecture Anchor</td>
+<td>Architecture</td>
+<td>Detect architecture drift</td>
+</tr>
+<tr>
+<td>Stack Anchor</td>
+<td>Engineering/Platform</td>
+<td>Detect stack drift</td>
+</tr>
+<tr>
+<td>Security Anchor</td>
+<td>Security</td>
+<td>Detect security drift</td>
+</tr>
+<tr>
+<td>Risk Anchor</td>
+<td>Risk</td>
+<td>Classify and detect risk drift</td>
+</tr>
+<tr>
+<td>Data Anchor</td>
+<td>Data Governance</td>
+<td>Detect data-policy drift</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Engineering</td>
+<td>Generate, test, refactor</td>
+</tr>
+<tr>
+<td>Exceptions</td>
+<td>Relevant Anchor Owner</td>
+<td>Analyze evidence and options</td>
+</tr>
+<tr>
+<td>Production Operation</td>
+<td>Engineering/SRE</td>
+<td>Monitor, diagnose, automate</td>
+</tr>
+</tbody>
+</table>
+<p>Again, AI may author most of an artifact without owning it.</p>
+<hr>
+<h1 id="21-metrics">21. Metrics</h1>
+<p>The Anchor Model should be measured on outcomes rather than AI utilization.</p>
+<p>Useful metrics include:</p>
+<h3 id="delivery">Delivery</h3>
+<ul>
+<li>lead time per Feature Spec;</li>
+<li>engineering hours per unit of value;</li>
+<li>deployment frequency;</li>
+<li>change failure rate;</li>
+<li>time to recovery.</li>
+</ul>
+<h3 id="alignment">Alignment</h3>
+<ul>
+<li>drift findings per feature;</li>
+<li>escaped drift;</li>
+<li>exception frequency;</li>
+<li>exception approval rate;</li>
+<li>anchor-related rework;</li>
+<li>product acceptance failures.</li>
+</ul>
+<h3 id="ai-economics">AI Economics</h3>
+<ul>
+<li>inference cost per feature;</li>
+<li>frontier-model percentage;</li>
+<li>coding-agent utilization;</li>
+<li>human review time;</li>
+<li>AI-generated code acceptance/rework rate.</li>
+</ul>
+<h3 id="governance">Governance</h3>
+<ul>
+<li>time to resolve exceptions;</li>
+<li>stale anchor count;</li>
+<li>anchor update frequency;</li>
+<li>unresolved high-severity findings;</li>
+<li>audit evidence completeness.</li>
+</ul>
+<h3 id="product">Product</h3>
+<ul>
+<li>outcome attainment;</li>
+<li>customer impact;</li>
+<li>feature adoption;</li>
+<li>business value delivered.</li>
+</ul>
+<p>The objective is not "more AI-generated code."</p>
+<p>The objective is <strong>more verified business value per unit of human effort without increasing unmanaged risk</strong>.</p>
+<hr>
+<h1 id="22-adoption-path">22. Adoption Path</h1>
+<p>The Anchor Model does not require an enterprise to redesign its entire SDLC at once.</p>
+<p>A practical adoption sequence is:</p>
+<h2 id="phase-1-establish-anchors">Phase 1 — Establish Anchors</h2>
+<p>Identify authoritative product, architecture, stack, UX, security, risk, and data guidance. Convert high-value portions into machine-consumable forms.</p>
+<h2 id="phase-2-standardize-feature-specs">Phase 2 — Standardize Feature Specs</h2>
+<p>Create a human-owned, AI-assisted Feature Spec workflow.</p>
+<h2 id="phase-3-introduce-orchestration">Phase 3 — Introduce Orchestration</h2>
+<p>Define how Feature Specs move through implementation and validation.</p>
+<h2 id="phase-4-add-ai-execution">Phase 4 — Add AI Execution</h2>
+<p>Allow small engineering teams to use coding agents within the orchestration contract.</p>
+<h2 id="phase-5-introduce-guardians">Phase 5 — Introduce Guardians</h2>
+<p>Begin with architecture, stack, and security drift detection.</p>
+<h2 id="phase-6-add-exceptions">Phase 6 — Add Exceptions</h2>
+<p>Create the formal path for intentional divergence and anchor evolution.</p>
+<h2 id="phase-7-close-the-learning-loop">Phase 7 — Close the Learning Loop</h2>
+<p>Use production telemetry, drift patterns, and exception outcomes to improve anchors and orchestration.</p>
+<hr>
+<h1 id="23-what-the-anchor-model-is-not">23. What the Anchor Model Is Not</h1>
+<p>It is not:</p>
+<ul>
+<li>a replacement for engineers;</li>
+<li>a replacement for Product Managers;</li>
+<li>a collection of Markdown files;</li>
+<li>a new waterfall process;</li>
+<li>a requirement that every feature pass every governance team;</li>
+<li>an argument for fully autonomous production deployment;</li>
+<li>a centralized architecture bureaucracy.</li>
+</ul>
+<p>It is a governance and execution model designed to allow <strong>greater autonomy because intent and constraints are made explicit and continuously verifiable</strong>.</p>
+<hr>
+<h1 id="24-relationship-to-agile">24. Relationship to Agile</h1>
+<p>The Anchor Model does not require abandoning Agile principles.</p>
+<p>It changes the role of several familiar artifacts.</p>
+<p>The backlog remains useful for sequencing.</p>
+<p>Feature Specs become stronger units of value.</p>
+<p>PRDs become durable product anchors rather than transient project documents.</p>
+<p>Definition of Done becomes partly executable through orchestration and guardian checks.</p>
+<p>Retrospectives can use drift and exception data rather than relying only on anecdotal observations.</p>
+<p>Small teams remain empowered, but empowerment is supported by machine-readable organizational context.</p>
+<p>In this sense, the Anchor Model can be viewed as an AI-native extension of agile delivery rather than its replacement.</p>
+<hr>
+<h1 id="25-the-emerging-operating-model">25. The Emerging Operating Model</h1>
+<p>The resulting organization looks different from a traditional software factory.</p>
+<p>Product Managers increasingly manage durable product intent and value decomposition.</p>
+<p>Specialist functions maintain high-quality anchors rather than repeatedly reviewing the same basic questions.</p>
+<p>Small engineering teams direct large amounts of AI execution capacity.</p>
+<p>Guardian agents continuously inspect alignment.</p>
+<p>Orchestration agents coordinate the lifecycle.</p>
+<p>Humans adjudicate ambiguity, exceptions, risk, and strategy.</p>
+<p>The system becomes capable of moving much faster without requiring every human control function to scale linearly with implementation volume.</p>
+<hr>
+<h1 id="26-core-principles">26. Core Principles</h1>
+<p>The Anchor Model can be reduced to ten principles:</p>
+<ol>
+<li><strong>Humans own truth and accountability.</strong></li>
+<li><strong>AI may author without owning.</strong></li>
+<li><strong>Durable intent should be represented as machine-consumable anchors.</strong></li>
+<li><strong>A Feature Spec should represent one bounded unit of business value.</strong></li>
+<li><strong>Orchestration should make the delivery process executable.</strong></li>
+<li><strong>Governance should be risk-adaptive rather than universally heavy.</strong></li>
+<li><strong>Specialized guardians should continuously detect drift.</strong></li>
+<li><strong>Drift should trigger evaluation, not automatic conformity.</strong></li>
+<li><strong>Exceptions should provide a governed path for innovation.</strong></li>
+<li><strong>Telemetry and exceptions should continuously improve the anchors themselves.</strong></li>
+</ol>
+<hr>
+<h1 id="27-conclusion">27. Conclusion</h1>
+<p>AI coding assistants make software execution dramatically more abundant.</p>
+<p>That abundance does not eliminate the need for Product, Architecture, UX, Security, Risk, Data Governance, or Engineering judgment. It increases the importance of expressing their intent clearly enough that machines can operate within it.</p>
+<p>The Anchor Model proposes a company-wide SDLC in which durable human-owned anchors define organizational truth; Product-owned orchestration determines how units of value move through the system; small engineering teams direct AI-assisted execution; guardian agents continuously detect drift; and explicit exception mechanisms allow the organization to learn rather than fossilize.</p>
+<p>The fundamental shift is from documentation as something people are expected to remember to <strong>intent as something the delivery system can continuously execute and verify</strong>.</p>
+<p>As implementation becomes cheaper, the competitive advantage may no longer be the organization that can produce the most code.</p>
+<p>It may be the organization that can move fastest <strong>without losing alignment</strong>.</p>
+<hr>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

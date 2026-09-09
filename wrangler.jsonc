@@ -1,9 +1,6 @@
 {
   "name": "driftingsignals",
   "compatibility_date": "2026-09-09",
-  "build": {
-    "command": "python freeze.py"
-  },
   "assets": {
     "directory": "./build",
     "html_handling": "auto-trailing-slash",

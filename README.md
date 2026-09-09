@@ -39,11 +39,11 @@ Add more Markdown files in the same folder and attachments under `assets/`. Refr
 
 ## Host (GitHub + Cloudflare Workers)
 
-This is a Workers static-assets project, not a classic Pages output-directory site. `python freeze.py` writes HTML into `build/`. [wrangler.jsonc](wrangler.jsonc) tells Wrangler to run that freeze, then upload `build/`.
+`python freeze.py` writes HTML into `build/`, and that folder is committed. Cloudflare only uploads it. It does not install Python or run Flask.
 
-Push to [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). Cloudflare already installs `requirements.txt` and Python from `.python-version`. Leave the deploy command as `npx wrangler deploy` (production) / `npx wrangler versions upload` (other branches). If the dashboard Worker name is not `driftingsignals`, change `"name"` in `wrangler.jsonc` to match.
+Push to `main` on [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). After a content or template change, freeze first so `build/` matches. Leave the deploy command as `npx wrangler deploy`. If the dashboard Worker name is not `driftingsignals`, change `"name"` in `wrangler.jsonc` to match.
 
-A good log shows `pip install`, then `Freezing site to .../build`, then Wrangler uploading assets. The previous failure (`Missing entry-point to Worker script or to assets directory`) meant Wrangler ran before any freeze and had nothing to publish.
+Optional: in the Worker **Build variables**, set `SKIP_DEPENDENCY_INSTALL` to `1` so Cloudflare skips `pip install` too. Do not add a `.python-version` file to git; that makes each build spend minutes installing Python 3.12. Keep a local copy from `.python-version.example`.
 
 Preview the static site locally:
 

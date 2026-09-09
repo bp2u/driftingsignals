@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="An organizational architecture for AI-enabled work. Humans own truth; AI authors its representation.">
+  <title>The Anchor Model · Drifting Signals</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-hub">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <span>The Anchor Model</span>
+  </nav>
+
+  <header class="hub-header">
+    <div class="card-meta">
+      <time datetime="2026-09-09">Sep 9, 2026</time>
+      
+    </div>
+    <h1>The Anchor Model</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    
+      <ul class="tags">
+        
+          <li>org-design</li>
+        
+          <li>governance</li>
+        
+          <li>sdlc</li>
+        
+      </ul>
+    
+  </header>
+
+  <div class="prose">
+    <p>AI is making execution cheap. The scarce thing is no longer the ability to write code, drafts, or analysis. It is keeping that output attached to what the organization actually intends, permits, and will stand behind.</p>
+<p>The Anchor Model is a proposed architecture for that problem, not a proven method.</p>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+<p><strong>Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</strong></p>
+</blockquote>
+<p><strong>Anchors</strong> are durable, human-owned representations of organizational truth: product intent, architecture, security, risk, brand, data rules. <strong>Orchestrators</strong> decide how a unit of work moves, which context applies, and when a human must step in. <strong>Agents</strong> do bounded work and are meant to be replaceable. <strong>Guardians</strong> check the result against the relevant Anchors and report drift. <strong>Humans</strong> keep ownership of truth, exceptions, and changes to the Anchors themselves.</p>
+<p>Drift is not automatically failure. A divergence can be a mistake, a one-time exception, or evidence that the Anchor should change. That loop is the point: more machine execution without fossilizing the organization.</p>
+<p>Software development is the first worked example. The same pattern is meant to apply anywhere AI does meaningful knowledge work.</p>
+<p><strong>Read in this order</strong> if you are new to it: the executive brief, then the architecture paper. Use the software and feature-spec documents when you want the SDLC version. Use the challenges page when you want the skeptical version. Appendix B of the architecture paper covers related 2026 work and what should not be claimed as distinctive.</p>
+  </div>
+
+  
+    <section class="related" aria-labelledby="docs-heading">
+      <h2 id="docs-heading">Documents</h2>
+      <ul class="file-list">
+        
+          <li>
+            <a href="/ideas/the-anchor-model/executive-brief/">
+              <span class="file-title">Executive brief</span>
+              <span class="file-summary">The short pitch: five actors, why it differs from giving everyone an agent, and what still needs to be proven.</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ideas/the-anchor-model/architecture/">
+              <span class="file-title">Organizational architecture</span>
+              <span class="file-summary">The domain-independent model: Anchors, Orchestrators, Agents, Guardians, humans, and how it maps beyond software.</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ideas/the-anchor-model/software-development/">
+              <span class="file-title">Software development</span>
+              <span class="file-summary">The first reference implementation: BRD/PRD anchors, feature specs, guardians, and a risk-adaptive SDLC.</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ideas/the-anchor-model/feature-spec-lifecycle/">
+              <span class="file-title">Feature spec lifecycle</span>
+              <span class="file-summary">How a paragraph of product intent becomes an approved, machine-consumable Feature Spec.</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ideas/the-anchor-model/challenges/">
+              <span class="file-title">Challenges and responses</span>
+              <span class="file-summary">Common objections: policy-as-code, RAG, Agile, bureaucracy, and where the model still needs evidence.</span>
+            </a>
+          </li>
+        
+      </ul>
+    </section>
+  
+
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

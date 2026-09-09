@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="The short pitch: five actors, why it differs from giving everyone an agent, and what still needs to be proven.">
+  <title>Executive brief · The Anchor Model</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <a href="/ideas/the-anchor-model/">The Anchor Model</a>
+    <span aria-hidden="true">/</span>
+    <span>Executive brief</span>
+  </nav>
+
+  <header class="hub-header">
+    <p class="eyebrow">The Anchor Model</p>
+    <h1>Executive brief</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+  </header>
+
+  <div class="prose">
+    <h2 id="an-organizational-architecture-for-ai-enabled-work">An Organizational Architecture for AI-Enabled Work</h2>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<h3 id="the-opportunity">The Opportunity</h3>
+<p>AI is rapidly reducing the cost of producing software, analysis, content, decisions, and operational work. The limiting factor increasingly becomes not execution capacity, but the organization's ability to keep that execution aligned with strategy, policy, risk appetite, customer intent, and accountability.</p>
+<p>The Anchor Model is a proposed organizational architecture for solving that problem.</p>
+<p>It is designed around five concepts:</p>
+<blockquote>
+<p><strong>Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</strong></p>
+</blockquote>
+<h3 id="the-model">The Model</h3>
+<p><strong>Anchors</strong> are durable, human-owned representations of organizational truth: product intent, architecture, security policy, risk appetite, brand standards, accounting policy, data rules, and similar constraints.</p>
+<p><strong>Orchestrators</strong> determine how a unit of work moves through the organization. They assemble relevant context, select appropriate Agents or tools, activate necessary Guardians, determine human gates, and collect evidence.</p>
+<p><strong>Agents</strong> perform bounded execution. They may write code, research, draft, analyze, test, reconcile, generate content, or operate tools. Agents are intentionally replaceable.</p>
+<p><strong>Guardians</strong> independently evaluate the resulting work against relevant Anchors and identify drift.</p>
+<p><strong>Humans</strong> retain ownership of truth, accountability, consequential decisions, exceptions, and changes to the Anchors themselves.</p>
+<h3 id="why-this-is-different">Why This Is Different</h3>
+<p>Most enterprise AI strategies focus on giving employees AI tools or deploying autonomous Agents.</p>
+<p>The Anchor Model focuses instead on the <strong>organizational control plane around AI execution</strong>.</p>
+<p>It asks:</p>
+<ul>
+<li>What does the organization consider true?</li>
+<li>Who owns that truth?</li>
+<li>How is it represented so machines can use it?</li>
+<li>How is the correct context assembled for each task?</li>
+<li>Which machine or human should perform the work?</li>
+<li>How is the result independently verified?</li>
+<li>When must a human decide?</li>
+<li>What happens when a better approach conflicts with an existing standard?</li>
+</ul>
+<p>The model turns organizational documentation from passive reference material into machine-consumable operating context.</p>
+<h3 id="drift-without-rigidity">Drift Without Rigidity</h3>
+<p>A Guardian finding does not automatically mean the work is wrong.</p>
+<p>A divergence may represent accidental drift—or a better idea.</p>
+<p>The model therefore includes an explicit Exception mechanism. The owner of the relevant Anchor can reject the divergence, approve a bounded exception, or evolve the Anchor.</p>
+<p>This creates a feedback loop in which AI can operate within organizational knowledge while also helping the organization improve that knowledge.</p>
+<h3 id="risk-adaptive-governance">Risk-Adaptive Governance</h3>
+<p>The model should not create an AI bureaucracy.</p>
+<p>Orchestration is risk-adaptive. A low-risk change may require only lightweight validation. A change involving sensitive data, financial exposure, regulated decisions, or security boundaries may activate additional Guardians and human approval.</p>
+<p>The objective is:</p>
+<blockquote>
+<p><strong>Maximum useful autonomy within explicit human ownership and acceptable risk.</strong></p>
+</blockquote>
+<h3 id="software-development-as-the-first-reference-implementation">Software Development as the First Reference Implementation</h3>
+<p>In software development, the model can map naturally to:</p>
+<ul>
+<li>BRD and PRD as Product Anchors;</li>
+<li>UX/UI, Architecture, Stack, Security, Risk, and Data as specialist Anchors;</li>
+<li>Feature Specs as bounded units of business value;</li>
+<li>Product-owned delivery orchestration;</li>
+<li>AI coding Agents working with small engineering teams;</li>
+<li>specialized Guardian Agents detecting product, architecture, stack, UX, security, risk, and data drift;</li>
+<li>Exception Requests for intentional divergence;</li>
+<li>human gates for consequential decisions.</li>
+</ul>
+<p>The same architecture can extend to marketing, finance, regulated operations, procurement, customer operations, legal/compliance, HR, and other knowledge-work domains.</p>
+<h3 id="what-must-be-proven">What Must Be Proven</h3>
+<p>The Anchor Model is a proposed architecture, not yet a proven methodology.</p>
+<p>A reference implementation should test:</p>
+<ul>
+<li>whether Anchors can be made reliably machine-consumable;</li>
+<li>Guardian precision and false-positive rates;</li>
+<li>human review burden;</li>
+<li>escaped drift;</li>
+<li>exception frequency and quality;</li>
+<li>cycle time;</li>
+<li>AI and infrastructure cost;</li>
+<li>business value per human hour;</li>
+<li>whether the system actually improves organizational throughput without increasing unmanaged risk.</li>
+</ul>
+<h3 id="the-strategic-thesis">The Strategic Thesis</h3>
+<p>As AI makes execution abundant, the competitive advantage may shift toward organizations that can safely direct that execution.</p>
+<p>The durable organizational assets may increasingly become:</p>
+<p><strong>Anchors</strong> — what the organization knows and requires.</p>
+<p><strong>Orchestration</strong> — how the organization turns intent into action.</p>
+<p><strong>Guardians</strong> — how the organization verifies alignment.</p>
+<p>AI models and Agents will change rapidly. The organizational architecture governing them can be much more durable.</p>
+<p>That is the ambition of the Anchor Model:</p>
+<blockquote>
+<p><strong>An Organizational Architecture for AI-Enabled Work.</strong></p>
+</blockquote>
+<hr>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

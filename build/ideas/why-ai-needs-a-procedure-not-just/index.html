@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A procedure is an ordered system of actions, not a polished paragraph. Procedural AI should engineer that object first, then talk about it.">
+  <title>Why AI Needs a Procedure Not Just an Answer · Drifting Signals</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-hub">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <span>Why AI Needs a Procedure Not Just an Answer</span>
+  </nav>
+
+  <header class="hub-header">
+    <div class="card-meta">
+      <time datetime="2026-06-04">Jun 4, 2026</time>
+      
+    </div>
+    <h1>Why AI Needs a Procedure Not Just an Answer</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    
+      <ul class="tags">
+        
+          <li>procedures</li>
+        
+          <li>rag</li>
+        
+          <li>safety</li>
+        
+      </ul>
+    
+  </header>
+
+  <div class="prose">
+    <p>Most AI assistants are good at producing an answer that sounds plausible. Ask how to replace a component, conduct a laboratory test, troubleshoot a machine, or follow a complex recipe, and the model can usually generate a polished sequence of steps in seconds.</p>
+<p>But procedural guidance has a harder requirement than ordinary question answering: the steps have to work together.</p>
+<p>A procedure is not simply a collection of relevant facts. It is an ordered system of actions, prerequisites, warnings, measurements, decision points, and dependencies. A mistake in one step can invalidate everything that follows. A missing warning can make an otherwise accurate answer unsafe. And when two credible sources disagree, quietly blending them into one confident paragraph may be worse than choosing either source on its own.</p>
+<p>This suggests a different architecture for procedural AI. Instead of retrieving information and immediately turning it into prose, the system should first construct a canonical, source-attributed representation of the procedure itself. The conversational answer should be a view of that underlying object—not the object itself.</p>
+<h2 id="the-limits-of-retrieve-and-respond">The limits of retrieve and respond</h2>
+<p>Retrieval-augmented generation, or RAG, improves an AI system by giving it access to relevant source material before it answers. This is valuable, but retrieval alone does not resolve the central problems of procedural work.</p>
+<p>Different sources often describe the same task in different ways. One may call a job “removing a cover,” while another describes it as “replacing the cover gasket.” A professional manual may assume specialized knowledge and omit explanatory details. A community guide may offer a useful shortcut but leave out a critical safety precaution. An institutional protocol may be authoritative but apply only to a particular device, environment, or version.</p>
+<p>A conventional RAG system can retrieve all of these passages, but it still has to improvise a unified response. That creates several risks:</p>
+<ul>
+<li>Equivalent procedures may be presented as separate or contradictory tasks.</li>
+<li>Steps from incompatible variants may be combined.</li>
+<li>Source authority may be flattened, giving an informal suggestion the same apparent weight as an official instruction.</li>
+<li>Safety-critical language may be summarized away.</li>
+<li>Follow-up questions may cause the model to reconstruct the procedure differently from one turn to the next.</li>
+</ul>
+<p>The issue is not merely hallucination. Even when every individual statement comes from a real source, the assembled procedure can still be incoherent.</p>
+<h2 id="canonicalizing-the-procedure">Canonicalizing the procedure</h2>
+<p>The first important shift is to identify when multiple descriptions refer to the same underlying task.</p>
+<p>That requires more than comparing titles. A system can examine procedural intent, the equipment or entities involved, applicability conditions, prerequisite states, and the meaning and order of the steps. Semantic similarity can help identify candidates, while structured fields, domain ontologies, synonym mappings, and model-based comparison can provide stronger evidence of equivalence.</p>
+<p>The result is a canonical procedure: a normalized representation of the task that is independent of any one source’s wording or formatting.</p>
+<p>Canonical does not mean that disagreements disappear. It means the system has a stable place to represent them. If two sources specify different values, sequences, or conditions, the conflict can remain explicit and attributed. If the system is not confident that two procedures are equivalent, it can preserve both candidates, explain the ambiguity, or ask the user a clarifying question.</p>
+<p>That is a much healthier failure mode than manufacturing consensus.</p>
+<h2 id="the-answer-plan-as-the-real-product">The answer plan as the real product</h2>
+<p>Once the task has been canonicalized, the system can build what I think of as an answer plan: a structured, machine-readable artifact containing the procedure’s ordered steps, parameters, warnings, decision points, media references, source links, and current state.</p>
+<p>The answer plan sits between retrieval and conversation.</p>
+<p>It might contain a step such as “disconnect the power source,” along with the authoritative source for that instruction, a safety classification, the conditions under which it applies, and a stable anchor that identifies the step throughout the conversation. The user may see a clear sentence and an illustration. The system sees a durable object with provenance and rules.</p>
+<p>This separation matters. Natural-language output can be adapted to a beginner, a professional, a voice interface, or a compact mobile display without changing the underlying procedure. The presentation is flexible; the procedural truth is controlled.</p>
+<p>It also makes the system easier to audit. Instead of asking why a model happened to produce a particular paragraph, we can inspect how the plan was assembled, which source supports each assertion, where conflicts remain, and which safety constraints were applied.</p>
+<h2 id="follow-up-without-losing-the-plot">Follow-up without losing the plot</h2>
+<p>Procedural conversations rarely end with the first answer. Users ask questions such as:</p>
+<ul>
+<li>“What does that part look like?”</li>
+<li>“Can I substitute this tool?”</li>
+<li>“Why is that measurement important?”</li>
+<li>“I completed that step. What is next?”</li>
+</ul>
+<p>In an ordinary chatbot, each follow-up is another opportunity for the answer to drift. The model may reinterpret what “that” refers to, retrieve a different procedure, or regenerate earlier instructions with subtle changes.</p>
+<p>Anchored follow-up addresses this by connecting the conversation to stable locations within the answer plan. The system can resolve a question using explicit step anchors, semantic similarity, conversational recency, and the user’s current progress. It can enrich or clarify one step without silently rewriting the rest of the procedure.</p>
+<p>This turns the interaction from a sequence of loosely related answers into a stateful working session. The system knows which procedure is active, which variant applies, where the user is, what has already been established, and what remains unresolved.</p>
+<h2 id="provenance-and-safety-are-different-dimensions">Provenance and safety are different dimensions</h2>
+<p>Source authority and safety are related, but they are not identical.</p>
+<p>An official source may be the strongest basis for the canonical sequence, while a community contribution may contain an excellent explanation, photograph, or practical tip. A well-designed system can attach that enrichment to the appropriate step without allowing it to overwrite the authoritative procedure.</p>
+<p>Safety needs its own enforcement layer. That layer can identify risk-bearing steps, preserve mandatory warnings, require acknowledgment, restrict unsupported modifications, or escalate when authoritative guidance is missing. In higher-risk settings, it may refuse to reconcile a conflict automatically.</p>
+<p>Keeping safety enforcement separate from source ranking prevents a common mistake: assuming that content is safe merely because it was retrieved, popular, or apparently authoritative.</p>
+<h2 id="a-domain-agnostic-pattern">A domain-agnostic pattern</h2>
+<p>The architecture applies anywhere instructions are fragmented across multiple sources.</p>
+<p>In equipment maintenance, it could reconcile a manufacturer manual, a service database, and technician notes. In a laboratory, it could align protocols that use different terminology while preserving required conditions and safety controls. In cooking, it could distinguish harmless variation from changes that affect food safety or chemistry. In home improvement, it could separate general technique from requirements tied to a material, tool, or local standard.</p>
+<p>Each domain needs its own ontology, risk model, and authority hierarchy. But the underlying pattern remains consistent:</p>
+<ol>
+<li>Retrieve candidate procedural material from heterogeneous sources.</li>
+<li>Normalize and compare the candidates.</li>
+<li>Determine equivalence—or preserve ambiguity when equivalence cannot be established.</li>
+<li>Construct a structured answer plan with provenance, conflicts, and safety metadata.</li>
+<li>Generate an appropriate presentation from that plan.</li>
+<li>Anchor follow-up interactions to the same persistent procedural state.</li>
+</ol>
+<h2 id="more-than-a-better-chatbot">More than a better chatbot</h2>
+<p>This approach is not simply a technique for generating nicer instructions. It changes what the AI system is responsible for producing.</p>
+<p>The output of a conventional assistant is an answer. The output of a procedural intelligence system is a governed representation of a task—one that can be presented conversationally, inspected programmatically, updated deliberately, and traced back to its sources.</p>
+<p>That distinction becomes increasingly important as AI moves from helping people find information to helping them act in the world. When the cost of inconsistency is a ruined part, a failed experiment, wasted material, or personal harm, eloquence is not enough.</p>
+<p>The future of trustworthy procedural AI will depend less on whether a model can write convincing steps and more on whether the system can establish what procedure is actually being performed, why each instruction belongs, which source supports it, what could go wrong, and where the user is within it.</p>
+<p>In other words, the answer shouldn’t be generated. The procedure should be engineered.</p>
+  </div>
+
+  
+
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

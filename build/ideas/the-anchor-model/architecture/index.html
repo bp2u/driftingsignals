@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="The domain-independent model: Anchors, Orchestrators, Agents, Guardians, humans, and how it maps beyond software.">
+  <title>Organizational architecture · The Anchor Model</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <a href="/ideas/the-anchor-model/">The Anchor Model</a>
+    <span aria-hidden="true">/</span>
+    <span>Organizational architecture</span>
+  </nav>
+
+  <header class="hub-header">
+    <p class="eyebrow">The Anchor Model</p>
+    <h1>Organizational architecture</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+  </header>
+
+  <div class="prose">
+    <h2 id="an-organizational-architecture-for-ai-enabled-work">An Organizational Architecture for AI-Enabled Work</h2>
+<p><strong>Concept White Paper — Version 0.1</strong></p>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<p><strong>Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</strong></p>
+<h2 id="abstract">Abstract</h2>
+<p>Artificial intelligence is making execution dramatically more abundant. Organizations can increasingly use AI to draft, analyze, build, research, communicate, test, and operate at a scale that would previously have required far more human labor. The resulting constraint is no longer simply execution capacity. It is alignment: keeping rapidly produced work attached to business intent, organizational policy, risk appetite, brand standards, architecture, and human accountability.</p>
+<p>The Anchor Model is a proposed organizational architecture for AI-enabled work. It separates durable human-owned truth from AI authorship and execution. <strong>Anchors</strong> represent authoritative organizational intent. <strong>Orchestrators</strong> determine how work should proceed and which context, actors, controls, and approval gates apply. <strong>Agents</strong> perform bounded work. <strong>Guardians</strong> independently evaluate outputs for drift from relevant Anchors. <strong>Humans</strong> retain authority over truth, consequential decisions, exceptions, and evolution of the Anchors themselves.</p>
+<p>The model is intended to create bounded autonomy: more AI execution without surrendering organizational accountability.</p>
+<h2 id="1-the-problem-execution-is-becoming-abundant">1. The Problem: Execution Is Becoming Abundant</h2>
+<p>Traditional organizations are structured around scarce human execution capacity. Processes, teams, queues, reviews, and documentation evolved partly because producing work was expensive.</p>
+<p>AI changes that economic assumption.</p>
+<p>When a small number of people can direct large amounts of machine execution, organizations can produce more code, analysis, content, decisions, and operational work. But increasing throughput without increasing alignment creates a new failure mode: <strong>faster drift</strong>.</p>
+<p>AI can efficiently produce work that is internally coherent yet inconsistent with the organization's actual intent.</p>
+<p>The critical question therefore changes from:</p>
+<blockquote>
+<p>How do we make AI do more work?</p>
+</blockquote>
+<p>to:</p>
+<blockquote>
+<p>How do we allow AI to do substantially more work while keeping humans in control of what is true, acceptable, valuable, and accountable?</p>
+</blockquote>
+<h2 id="2-the-core-principle">2. The Core Principle</h2>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<p>Ownership and authorship are different.</p>
+<p>A human Product leader may own the truth of a customer problem while AI authors the PRD that represents it. Security may own the truth of an organizational control while AI converts that control into machine-readable policy. Finance may own a forecasting methodology while AI authors reports and analyses based on it.</p>
+<p>The party that generates an artifact does not automatically own its meaning.</p>
+<p>This distinction provides the foundation for scalable human governance of AI-enabled work.</p>
+<h2 id="3-the-five-elements">3. The Five Elements</h2>
+<h3 id="31-anchors-define">3.1 Anchors Define</h3>
+<p>An <strong>Anchor</strong> is a durable, authoritative, human-owned representation of organizational truth.</p>
+<p>Anchors can represent:</p>
+<ul>
+<li>strategy;</li>
+<li>product intent;</li>
+<li>policy;</li>
+<li>architecture;</li>
+<li>security requirements;</li>
+<li>risk appetite;</li>
+<li>brand standards;</li>
+<li>accounting policy;</li>
+<li>legal constraints;</li>
+<li>operating procedures;</li>
+<li>data governance;</li>
+<li>quality standards.</li>
+</ul>
+<p>Anchors should increasingly be machine-consumable. Natural-language explanation may coexist with structured rules, schemas, policy-as-code, examples, and testable constraints.</p>
+<p>Documentation therefore becomes part of the <strong>control plane for AI execution</strong>.</p>
+<h3 id="32-orchestrators-direct">3.2 Orchestrators Direct</h3>
+<p>An <strong>Orchestrator</strong> determines how a unit of work moves through the organization.</p>
+<p>It asks:</p>
+<ul>
+<li>What outcome is requested?</li>
+<li>Which Anchors apply?</li>
+<li>What context is needed?</li>
+<li>Which Agent, human, or deterministic tool should perform each step?</li>
+<li>Which validations are required?</li>
+<li>Which Guardians should participate?</li>
+<li>What risk classification applies?</li>
+<li>When is human approval required?</li>
+<li>What evidence must exist before completion?</li>
+</ul>
+<p>Orchestrators do not need to perform the work themselves. They direct the work.</p>
+<p>The policy governing an Orchestrator should generally be owned by the organizational function accountable for the outcome, while technical execution machinery may be owned by platform or engineering teams.</p>
+<h3 id="33-agents-execute">3.3 Agents Execute</h3>
+<p><strong>Agents</strong> provide scalable execution capacity.</p>
+<p>They may:</p>
+<ul>
+<li>research;</li>
+<li>draft;</li>
+<li>code;</li>
+<li>transform;</li>
+<li>classify;</li>
+<li>analyze;</li>
+<li>generate;</li>
+<li>test;</li>
+<li>reconcile;</li>
+<li>summarize;</li>
+<li>operate tools.</li>
+</ul>
+<p>Agents are deliberately replaceable components. The architecture should not depend on a particular model or vendor.</p>
+<h3 id="34-guardians-verify">3.4 Guardians Verify</h3>
+<p><strong>Guardians</strong> independently evaluate work against relevant Anchors.</p>
+<p>A Guardian does not define organizational truth. It asks whether the work remains aligned with the truth owned elsewhere.</p>
+<p>Guardian outputs should provide evidence, confidence, severity, and recommended disposition rather than opaque approval.</p>
+<p>Guardians should be invoked selectively. Applying every Guardian to every task would recreate bureaucracy with AI.</p>
+<h3 id="35-humans-decide">3.5 Humans Decide</h3>
+<p>Humans retain authority where accountability matters.</p>
+<p>Human decisions include:</p>
+<ul>
+<li>approving or changing Anchors;</li>
+<li>resolving material ambiguity;</li>
+<li>accepting consequential risk;</li>
+<li>approving exceptions;</li>
+<li>making strategic tradeoffs;</li>
+<li>authorizing high-impact actions;</li>
+<li>deciding when organizational truth should evolve.</li>
+</ul>
+<p>Human-in-the-loop should not mean human approval for every machine action. It means <strong>human authority at consequential boundaries</strong>.</p>
+<h2 id="4-the-control-loop">4. The Control Loop</h2>
+<pre><code class="language-text">                HUMAN-OWNED TRUTH
+                       |
+                       v
+                    ANCHORS
+                  define intent
+                       |
+                       v
+                 ORCHESTRATOR
+                   directs work
+                       |
+             +---------+---------+
+             |         |         |
+             v         v         v
+           AGENT      HUMAN     TOOL
+             |         |         |
+             +---------+---------+
+                       |
+                       v
+                   GUARDIANS
+                verify alignment
+                       |
+                 +-----+-----+
+                 |           |
+              ALIGNED       DRIFT
+                 |           |
+                 |           v
+                 |       EXCEPTION
+                 |           |
+                 |           v
+                 |      ANCHOR OWNER
+                 |      /    |    \
+                 |   Reject Allow Evolve
+                 |           |
+                 +-----------+
+                       |
+                       v
+                    OUTCOME
+                       |
+                       v
+                   TELEMETRY
+                       |
+                       +----&gt; learning / better Anchors
+</code></pre>
+<h2 id="5-drift-and-exceptions">5. Drift and Exceptions</h2>
+<p>Drift is a difference between observed work and an applicable Anchor.</p>
+<p>Drift is not automatically wrong.</p>
+<p>It may represent:</p>
+<ol>
+<li>accidental divergence;</li>
+<li>an incorrect interpretation;</li>
+<li>a justified one-time exception;</li>
+<li>evidence that the Anchor itself should evolve.</li>
+</ol>
+<p>A Guardian should detect divergence, not automatically suppress innovation.</p>
+<p>An Exception Request should explain the sanctioned approach, proposed alternative, evidence, benefits, risks, and requested disposition.</p>
+<p>The Anchor owner may:</p>
+<ul>
+<li>reject the exception;</li>
+<li>approve a bounded exception;</li>
+<li>approve the exception and evolve the Anchor.</li>
+</ul>
+<p>This converts governance from static enforcement into an organizational learning mechanism.</p>
+<h2 id="6-risk-adaptive-orchestration">6. Risk-Adaptive Orchestration</h2>
+<p>Governance must be proportional.</p>
+<p>A low-risk, reversible task may need only lightweight verification. A consequential task involving regulated data, financial exposure, public claims, security boundaries, or irreversible action may require multiple Guardians and explicit human approval.</p>
+<p>The Orchestrator should therefore activate controls based on:</p>
+<ul>
+<li>consequence;</li>
+<li>reversibility;</li>
+<li>data sensitivity;</li>
+<li>regulatory exposure;</li>
+<li>novelty;</li>
+<li>confidence;</li>
+<li>financial impact;</li>
+<li>customer impact;</li>
+<li>organizational risk appetite.</li>
+</ul>
+<p>Without risk adaptation, AI governance can become an automated bureaucracy.</p>
+<h2 id="7-ownership-versus-machinery">7. Ownership Versus Machinery</h2>
+<p>A useful separation exists between policy ownership and execution machinery.</p>
+<p>The outcome owner should generally own:</p>
+<ul>
+<li>intended result;</li>
+<li>orchestration policy;</li>
+<li>completion criteria;</li>
+<li>human gates;</li>
+<li>acceptable evidence.</li>
+</ul>
+<p>Platform or technical teams may own:</p>
+<ul>
+<li>workflow engines;</li>
+<li>model routing;</li>
+<li>tool integrations;</li>
+<li>logging;</li>
+<li>identity and permissions;</li>
+<li>CI/CD;</li>
+<li>telemetry infrastructure.</li>
+</ul>
+<p>Anchor owners remain accountable for the truth represented in their Anchors.</p>
+<h2 id="8-evidence-and-provenance">8. Evidence and Provenance</h2>
+<p>AI-enabled work should produce evidence, not merely output.</p>
+<p>Depending on the domain, an evidence package may record:</p>
+<ul>
+<li>governing Anchor versions;</li>
+<li>inputs;</li>
+<li>models or tools used;</li>
+<li>material assumptions;</li>
+<li>Guardian findings;</li>
+<li>exceptions;</li>
+<li>human decisions;</li>
+<li>approvals;</li>
+<li>deterministic validation;</li>
+<li>final outcome;</li>
+<li>production telemetry.</li>
+</ul>
+<p>This provides traceability from organizational intent to executed work.</p>
+<h2 id="9-economics-of-model-routing">9. Economics of Model Routing</h2>
+<p>The architecture should not assume that every task requires the most capable model.</p>
+<p>Orchestrators can route:</p>
+<ul>
+<li>mechanical work to inexpensive models;</li>
+<li>deterministic work to code or rules engines;</li>
+<li>ambiguous reasoning to stronger models;</li>
+<li>consequential decisions to humans.</li>
+</ul>
+<p>The objective is the least expensive reliable execution path consistent with the consequence of the work.</p>
+<h2 id="10-what-is-actually-durable">10. What Is Actually Durable?</h2>
+<p>Individual AI products will change rapidly.</p>
+<p>Agents are therefore not the primary organizational intellectual property.</p>
+<p>The more durable assets are:</p>
+<p><strong>Anchors</strong> — what the organization knows, intends, permits, and requires.</p>
+<p><strong>Orchestration</strong> — how the organization turns intent into action.</p>
+<p><strong>Guardian logic</strong> — how the organization determines whether execution remains aligned.</p>
+<p>This makes the Anchor Model intentionally vendor-independent.</p>
+<h2 id="11-a-testable-hypothesis-not-a-proven-doctrine">11. A Testable Hypothesis, Not a Proven Doctrine</h2>
+<p>The Anchor Model combines ideas related to policy-as-code, human-in-the-loop systems, workflow orchestration, design systems, architecture governance, automated testing, AI agents, and organizational controls.</p>
+<p>Its proposed contribution is their integration into a human-owned control architecture for AI-enabled execution.</p>
+<p>The model should be treated as a hypothesis to validate empirically.</p>
+<p>Important questions include:</p>
+<ul>
+<li>Can Anchors be represented precisely enough for reliable machine interpretation?</li>
+<li>Can Guardians achieve useful precision without excessive false positives?</li>
+<li>Does risk-adaptive orchestration reduce governance burden?</li>
+<li>Does the Exception mechanism improve Anchors over time?</li>
+<li>Does the model increase verified business value per human hour?</li>
+<li>Can accountability remain clear as AI authorship increases?</li>
+</ul>
+<p>Reference implementations and measured pilots should precede claims of broad superiority.</p>
+<h2 id="12-success-measures">12. Success Measures</h2>
+<p>The model should be judged on outcomes such as:</p>
+<ul>
+<li>business value per human hour;</li>
+<li>cycle time;</li>
+<li>human review burden;</li>
+<li>escaped drift;</li>
+<li>Guardian false-positive rate;</li>
+<li>exception resolution time;</li>
+<li>cost per completed unit of work;</li>
+<li>quality;</li>
+<li>control failures;</li>
+<li>risk events;</li>
+<li>Anchor freshness;</li>
+<li>percentage of work requiring human escalation.</li>
+</ul>
+<p>The goal is not maximum autonomy.</p>
+<p>The goal is <strong>maximum useful autonomy within explicit human ownership and acceptable risk</strong>.</p>
+<h2 id="13-conclusion">13. Conclusion</h2>
+<p>AI makes execution abundant. That makes organizational alignment more valuable.</p>
+<p>The Anchor Model proposes a simple division of responsibility:</p>
+<blockquote>
+<p><strong>Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</strong></p>
+</blockquote>
+<p>Underneath it sits an even simpler principle:</p>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+</blockquote>
+<p>The opportunity is not merely to give people better AI tools. It is to design organizations whose intent, controls, workflows, and accountability are structured for a world in which AI can perform a substantial share of execution.</p>
+<p>That is the purpose of the Anchor Model:</p>
+<p><strong>An Organizational Architecture for AI-Enabled Work.</strong></p>
+<hr>
+<h1 id="appendix-a-applications-beyond-software-development">Appendix A — Applications Beyond Software Development</h1>
+<p>The Anchor Model is domain-independent. The specific Anchors, Orchestrators, Agents, Guardians, and human gates change by function.</p>
+<p>These examples are intentionally illustrative rather than complete designs.</p>
+<h2 id="a1-software-development">A.1 Software Development</h2>
+<p><strong>Anchors:</strong> BRD, PRD, UX/UI, Architecture, Stack, Security, Risk, Data Governance<br>
+<strong>Orchestrator:</strong> Product-owned delivery orchestration policy<br>
+<strong>Agents:</strong> Coding, testing, research, documentation, migration agents<br>
+<strong>Guardians:</strong> Product, UX, Architecture, Stack, Security, Risk, Data<br>
+<strong>Humans:</strong> Product owners, engineers, architects, security/risk owners</p>
+<p>See the companion paper, <em>The Anchor Model for Software Development</em>.</p>
+<h2 id="a2-marketing">A.2 Marketing</h2>
+<p><strong>Anchors:</strong> Brand, campaign strategy, legal claims, audience policy, privacy, channel standards<br>
+<strong>Orchestrator:</strong> Campaign orchestration<br>
+<strong>Agents:</strong> Research, copy, image, video, segmentation, analytics<br>
+<strong>Guardians:</strong> Brand, legal/claims, privacy, channel compliance<br>
+<strong>Humans:</strong> Marketing owner, brand, legal, compliance</p>
+<p>A campaign can be generated rapidly while remaining attached to brand truth and approved claims.</p>
+<h2 id="a3-finance-and-fpa">A.3 Finance and FP&amp;A</h2>
+<p><strong>Anchors:</strong> Accounting policy, forecast methodology, chart of accounts, materiality thresholds, reporting definitions<br>
+<strong>Orchestrator:</strong> Close, forecast, or management-reporting workflow<br>
+<strong>Agents:</strong> Reconciliation, variance analysis, narrative drafting, scenario modeling<br>
+<strong>Guardians:</strong> Accounting policy, anomaly, controls, data quality<br>
+<strong>Humans:</strong> Controller, FP&amp;A leadership, business owners</p>
+<p>AI authors analysis; humans remain accountable for financial truth.</p>
+<h2 id="a4-regulated-operations-underwriting">A.4 Regulated Operations / Underwriting</h2>
+<p><strong>Anchors:</strong> Policy, regulation, eligibility rules, risk appetite, fair-treatment requirements<br>
+<strong>Orchestrator:</strong> Case or underwriting workflow<br>
+<strong>Agents:</strong> Document extraction, verification, analysis, recommendation<br>
+<strong>Guardians:</strong> Compliance, fairness, risk, policy adherence<br>
+<strong>Humans:</strong> Authorized decision makers and exception owners</p>
+<p>The architecture separates machine recommendation from accountable authority.</p>
+<h2 id="a5-customer-operations">A.5 Customer Operations</h2>
+<p><strong>Anchors:</strong> Customer policy, service standards, refund/credit authority, legal disclosures, brand voice<br>
+<strong>Orchestrator:</strong> Case-resolution workflow<br>
+<strong>Agents:</strong> Classification, retrieval, response drafting, workflow execution<br>
+<strong>Guardians:</strong> Policy, customer harm, brand, compliance<br>
+<strong>Humans:</strong> Escalation owners for exceptions and consequential decisions</p>
+<h2 id="a6-procurement-and-vendor-management">A.6 Procurement and Vendor Management</h2>
+<p><strong>Anchors:</strong> Procurement policy, approved terms, security requirements, third-party risk appetite, budget authority<br>
+<strong>Orchestrator:</strong> Vendor evaluation and approval workflow<br>
+<strong>Agents:</strong> Research, comparison, contract extraction, diligence preparation<br>
+<strong>Guardians:</strong> Security, risk, legal, financial authority<br>
+<strong>Humans:</strong> Procurement, business sponsor, legal/risk approvers</p>
+<h2 id="a7-legal-and-compliance-work">A.7 Legal and Compliance Work</h2>
+<p><strong>Anchors:</strong> Approved legal positions, playbooks, jurisdictional rules, escalation policy, privilege requirements<br>
+<strong>Orchestrator:</strong> Matter or review workflow<br>
+<strong>Agents:</strong> Research, extraction, drafting, comparison<br>
+<strong>Guardians:</strong> Citation/evidence, policy, jurisdiction, confidentiality<br>
+<strong>Humans:</strong> Attorneys and authorized compliance owners</p>
+<p>The architecture should never confuse AI authorship with legal accountability.</p>
+<h2 id="a8-human-resources">A.8 Human Resources</h2>
+<p><strong>Anchors:</strong> HR policy, compensation frameworks, job architecture, employment-law guidance, privacy<br>
+<strong>Orchestrator:</strong> Hiring, mobility, performance, or employee-case workflow<br>
+<strong>Agents:</strong> Drafting, scheduling, information retrieval, structured analysis<br>
+<strong>Guardians:</strong> Policy, privacy, fairness, legal requirements<br>
+<strong>Humans:</strong> HR owners and authorized managers</p>
+<h2 id="a9-the-common-pattern">A.9 The Common Pattern</h2>
+<p>Across these domains, the implementation changes but the architecture remains recognizable:</p>
+<pre><code class="language-text">Human-owned truth
+      |
+   Anchors
+      |
+Orchestrator
+      |
+Agents / Humans / Tools
+      |
+Guardians
+      |
+Human authority where consequential
+      |
+Outcome
+      |
+Telemetry and learning
+</code></pre>
+<p>The broader vision is therefore not a software-development methodology.</p>
+<p>It is an organizational architecture for directing, constraining, verifying, and learning from AI-enabled work while preserving human ownership of truth and accountability.</p>
+<hr>
+<h1 id="appendix-b-related-work-overlap-and-differentiation">Appendix B — Related Work, Overlap, and Differentiation</h1>
+<p>A candid companion note for readers of the Anchor Model white paper, identifying closely related 2026 work and clarifying which ideas should—and should not—be treated as distinctive.</p>
+<p><strong>Prepared September 2026</strong></p>
+<h2 id="executive-note">Executive note</h2>
+<p>The Anchor Model was developed independently, but it is not being developed in an intellectual vacuum. Recent industry work and research converge on several of the same problems: specification-driven AI development, machine-readable constraints, continuous governance, drift detection, independent verification, risk-based human gates, and explicit human authority. In particular, <em>The Spec Growth Engine</em> is close to several mechanics in the software-development application of the Anchor Model.</p>
+<p>Accordingly, the Anchor Model should not claim novelty for those individual mechanisms. Its potentially distinctive contribution is the higher-level organizational architecture: multiple heterogeneous, human-owned sources of authoritative intent (“Anchors”); orchestration that selects which authorities, actors, controls, and evidence apply to a unit of work; replaceable execution Agents; domain-specific independent Guardians; and a governed feedback loop through which exceptions can challenge and evolve organizational truth.</p>
+<blockquote>
+<p><strong>Humans own truth. AI authors its representation.</strong></p>
+<p><strong>Anchors define. Orchestrators direct. Agents execute. Guardians verify. Humans decide.</strong></p>
+</blockquote>
+<h2 id="b1-the-sources">B.1 The sources</h2>
+<h3 id="onetrust-guardian-agents-continuous-ai-governance">OneTrust — Guardian Agents / Continuous AI Governance</h3>
+<p>Industry guidance and product framing. <a href="https://www.onetrust.com/guardian-agents/">Source</a></p>
+<p>OneTrust describes Guardian Agents as runtime governance systems for autonomous AI: monitoring behavior, enforcing scope and access boundaries, detecting drift, escalating risk, and maintaining auditability. It emphasizes agent identity, least privilege, risk-based human oversight, lifecycle control, and governance that operates continuously rather than as a one-time review. This overlaps strongly with the Anchor Model’s Guardian concept, but its primary object of governance is the AI agent and its behavior rather than arbitrary organizational work evaluated against multiple separately owned domain Anchors.</p>
+<h3 id="hartwig-grabowski-the-spec-growth-engine">Hartwig Grabowski — The Spec Growth Engine</h3>
+<p><em>Spec-Anchored, Code-Coupled, Drift-Enforced Architecture for AI-Assisted Software Development.</em> <a href="https://arxiv.org/abs/2606.27045">arXiv:2606.27045</a> — submitted June 25, 2026.</p>
+<p>The paper addresses context explosion and silent spec-code drift using a machine-readable spec graph, scoped context assembly (“Spine”), vertical-slice growth, and a drift gate that can block merges. It explicitly synthesizes established software-engineering practices into a machine-enforced, code-coupled framework. Of the sources reviewed here, it is the closest match to the software-development implementation of the Anchor Model, especially around spec anchoring, selective context, drift enforcement, and bounded authority.</p>
+<h3 id="sabry-e-farrag-the-productivity-reliability-paradox">Sabry E. Farrag — The Productivity-Reliability Paradox</h3>
+<p><em>Specification-Driven Governance for AI-Augmented Software Development.</em> <a href="https://arxiv.org/abs/2605.01160">arXiv:2605.01160</a> — submitted May 1, 2026.</p>
+<p>This paper argues that faster AI code generation does not necessarily produce faster organizational delivery because review, context, and reliability become bottlenecks. It introduces a Specification Governance Model and concludes that specification discipline—not simply model capability—is a binding constraint on dependable AI-assisted software development. That thesis strongly overlaps the Anchor Model’s view that execution is becoming abundant while alignment, context, verification, and authority become more important.</p>
+<h3 id="christopher-koch-joshua-andreas-wellbrock-agile-v">Christopher Koch &amp; Joshua Andreas Wellbrock — Agile V</h3>
+<p><em>A Compliance-Ready Framework for AI-Augmented Engineering — From Concept to Audit-Ready Delivery.</em> <a href="https://arxiv.org/abs/2602.20684">arXiv:2602.20684</a> — submitted February 24, 2026.</p>
+<p>Agile V combines Agile iteration with V-Model verification and embeds specialized AI agents for requirements, design, build, test, and compliance into a continuous workflow. It uses independent verification, automatically generated audit artifacts, and mandatory human approval gates, and reports a small feasibility case study. This substantially overlaps the Anchor Model’s separation of execution, verification, evidence, and consequential human decision-making, but is centered on compliant engineering delivery rather than a general organizational architecture.</p>
+<h3 id="srinivas-rao-marri-constitutional-spec-driven-development">Srinivas Rao Marri — Constitutional Spec-Driven Development</h3>
+<p><em>Enforcing Security by Construction in AI-Assisted Code Generation.</em> <a href="https://arxiv.org/abs/2602.02584">arXiv:2602.02584</a> — submitted January 31, 2026.</p>
+<p>This methodology introduces a versioned, machine-readable security “Constitution” containing non-negotiable constraints that shape AI-generated code before implementation. The paper emphasizes traceability and reports a banking case study in which constitutional constraints reduced security defects compared with unconstrained generation. Its Constitution is conceptually close to a Security Anchor, especially the idea that human-readable intent can be represented in a structured, versioned form that machines can consume and verify.</p>
+<p>The original source list included arXiv:2605.01160 twice; it is listed once here.</p>
+<h2 id="b2-where-the-anchor-model-clearly-overlaps-existing-work">B.2 Where the Anchor Model clearly overlaps existing work</h2>
+<p>The following ideas should be treated as convergent or established patterns rather than claimed as inventions of the Anchor Model:</p>
+<ul>
+<li>Specifications or constitutions that constrain AI-generated work.</li>
+<li>Machine-readable or machine-consumable governing artifacts.</li>
+<li>Selective context assembly for AI execution.</li>
+<li>Detection of drift between intended and actual implementation.</li>
+<li>Independent AI-assisted verification.</li>
+<li>Risk-sensitive human approval gates and bounded autonomy.</li>
+<li>Traceability, evidence generation, and auditability.</li>
+<li>Continuous runtime governance of autonomous agents.</li>
+<li>Versioned policies, constraints, and formal amendment or exception mechanisms.</li>
+</ul>
+<h2 id="b3-where-the-anchor-model-may-contribute-something-broader">B.3 Where the Anchor Model may contribute something broader</h2>
+<h3 id="1-human-ownership-of-truth-versus-ai-authorship">1. Human ownership of truth versus AI authorship</h3>
+<p>The Anchor Model makes an explicit distinction between authority and authorship: AI may create, maintain, translate, or execute representations of organizational intent, but a human role remains accountable for what is authoritative. This is broader than keeping a human “in the loop”; it is an ownership model for organizational truth.</p>
+<h3 id="2-multiple-heterogeneous-anchors">2. Multiple heterogeneous Anchors</h3>
+<p>The model is not built around a single specification or constitution. Product intent, architecture standards, security policy, UX principles, risk appetite, data governance, regulatory interpretation, empirical evidence, and strategic objectives can all be authoritative in different ways and owned by different human roles.</p>
+<h3 id="3-orchestration-as-coordination-of-authority">3. Orchestration as coordination of authority</h3>
+<p>The Orchestrator does more than route tasks to agents. In the proposed model it determines which Anchors apply, which actors or tools should execute, which Guardians should evaluate the work, what evidence is required, and where human authority must enter the workflow. This makes orchestration partly an authority-and-context problem, not merely an agent-routing problem.</p>
+<h3 id="4-guardians-tied-to-domain-authority">4. Guardians tied to domain authority</h3>
+<p>A Guardian does not own the standard it evaluates. A Security Guardian evaluates against a Security Anchor owned by Security; a Product Guardian evaluates against Product intent; a Risk Guardian evaluates against the organization’s risk authority. This separation is intended to preserve accountability while allowing verification to operate at machine speed.</p>
+<h3 id="5-exceptions-as-an-organizational-learning-loop">5. Exceptions as an organizational learning loop</h3>
+<p>Drift is not automatically treated as failure. A deliberate divergence can produce evidence, trigger an exception request, and be adjudicated by the human owner of the relevant Anchor; the result may be rejection, a bounded exception, or evolution of the Anchor itself. This turns execution into a potential source of governed organizational learning.</p>
+<h3 id="6-generalization-beyond-software">6. Generalization beyond software</h3>
+<p>The broad Anchor Model is intended to apply to AI-enabled organizational work, not only software development: underwriting, marketing, finance, procurement, customer operations, legal/compliance, HR, and other domains. Spec-driven development can therefore be viewed as one possible application of the broader architecture rather than the definition of the model.</p>
+<h2 id="b4-a-more-precise-differentiation">B.4 A more precise differentiation</h2>
+<table>
+<thead>
+<tr>
+<th>Related concept</th>
+<th>Primary question</th>
+<th>Anchor Model framing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy-as-code</td>
+<td>What rules should machines enforce?</td>
+<td>How does human-owned intent become governed, machine-directed work?</td>
+</tr>
+<tr>
+<td>Spec-driven development</td>
+<td>How do specifications constrain AI software delivery?</td>
+<td>How do multiple human-owned authorities coordinate AI-enabled work?</td>
+</tr>
+<tr>
+<td>Guardian agents</td>
+<td>How do we monitor and constrain autonomous AI agents?</td>
+<td>How do independent evaluators verify work against applicable domain Anchors?</td>
+</tr>
+<tr>
+<td>RAG / context assembly</td>
+<td>What information should the model retrieve?</td>
+<td>Which sources are authoritative, who owns them, when do they apply, and what happens on conflict?</td>
+</tr>
+<tr>
+<td>Human-in-the-loop</td>
+<td>Where should a human approve or intervene?</td>
+<td>Which decisions remain human-owned, and how is that authority encoded into the workflow?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="b5-the-strongest-current-formulation">B.5 The strongest current formulation</h2>
+<p>A defensible claim is not: “The Anchor Model invented spec-driven AI development, Guardian agents, drift detection, or human approval gates.”</p>
+<p>A more defensible claim is: “The Anchor Model proposes an organizational architecture that integrates human-owned authoritative context, risk-adaptive orchestration, replaceable AI execution, independent domain verification, and governed human decision-making into a common pattern for AI-enabled work.”</p>
+<p>A useful relationship to the adjacent work is:</p>
+<ul>
+<li>Spec-driven development can be an implementation pattern within the Anchor Model.</li>
+<li>Policy-as-code can be a machine-enforceable representation within an Anchor.</li>
+<li>Guardian Agents can be one mechanism for verification or runtime control.</li>
+<li>RAG can be one mechanism for assembling relevant Anchor context.</li>
+<li>Human approval gates can be one expression of human decision authority.</li>
+</ul>
+<h2 id="b6-important-unresolved-questions">B.6 Important unresolved questions</h2>
+<p>The Anchor Model is still a proposed framework, not a validated operating model. Before making stronger claims, a reference implementation should test whether it improves outcomes compared with simpler agentic workflows.</p>
+<ul>
+<li>Can heterogeneous Anchors be represented precisely enough for reliable machine use?</li>
+<li>Can an Orchestrator correctly determine which authorities apply without creating a new opaque decision layer?</li>
+<li>Can Guardians achieve useful precision without overwhelming teams with plausible-sounding false positives?</li>
+<li>Can conflicting Anchors be resolved without turning human approval into the new bottleneck?</li>
+<li>Can exception-driven evolution improve organizational learning without weakening controls?</li>
+<li>Does the architecture improve business value, cycle time, reliability, or auditability enough to justify its complexity?</li>
+</ul>
+<h2 id="b7-recommended-interpretation-for-readers-of-the-white-paper">B.7 Recommended interpretation for readers of the white paper</h2>
+<p>The white paper should be read as an emerging synthesis and hypothesis, not as a claim that every underlying mechanism is novel. The recent convergence represented by these sources is useful evidence that the underlying problem is real: as AI execution becomes faster and more autonomous, specification, context, governance, verification, and human authority become increasingly important.</p>
+<p>The next step for the Anchor Model should therefore be empirical. A small reference implementation should compare the same AI-enabled work with and without explicit Anchors, Orchestration, Guardians, and exception handling, measuring alignment, defects, human effort, false positives, cycle time, and inference cost.</p>
+<h2 id="b8-sources">B.8 Sources</h2>
+<ul>
+<li>OneTrust — Guardian Agents / Continuous AI Governance — <a href="https://www.onetrust.com/guardian-agents/">onetrust.com/guardian-agents</a></li>
+<li>Hartwig Grabowski — The Spec Growth Engine — <a href="https://arxiv.org/abs/2606.27045">arXiv:2606.27045</a></li>
+<li>Sabry E. Farrag — The Productivity-Reliability Paradox — <a href="https://arxiv.org/abs/2605.01160">arXiv:2605.01160</a></li>
+<li>Christopher Koch &amp; Joshua Andreas Wellbrock — Agile V — <a href="https://arxiv.org/abs/2602.20684">arXiv:2602.20684</a></li>
+<li>Srinivas Rao Marri — Constitutional Spec-Driven Development — <a href="https://arxiv.org/abs/2602.02584">arXiv:2602.02584</a></li>
+</ul>
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>

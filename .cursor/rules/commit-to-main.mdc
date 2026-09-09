@@ -9,3 +9,4 @@ alwaysApply: true
 - When asked to commit or push, commit on `main` and push `origin main`.
 - Do not create `cursor/` or other feature branches, and do not open a pull request, unless the user explicitly asks.
 - Cloudflare production deploys from `main`. A push to `main` is enough to update the live site.
+- Before committing site or content changes, run `python freeze.py` and include the updated `build/` files. Cloudflare only uploads that folder; it does not install Python.

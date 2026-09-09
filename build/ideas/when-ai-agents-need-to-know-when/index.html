@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumOS is the control plane that could make that model programmable, observable, and reusable.">
+  <title>When AI Agents Need to Know When to Stop · Drifting Signals</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-hub">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <span>When AI Agents Need to Know When to Stop</span>
+  </nav>
+
+  <header class="hub-header">
+    <div class="card-meta">
+      <time datetime="2026-08-23">Aug 23, 2026</time>
+      
+    </div>
+    <h1>When AI Agents Need to Know When to Stop</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    
+      <ul class="tags">
+        
+          <li>agents</li>
+        
+          <li>quorum</li>
+        
+          <li>coordination</li>
+        
+      </ul>
+    
+  </header>
+
+  <div class="prose">
+    <p>Most discussions about agentic AI begin with a model and end with a workflow.</p>
+<p>Give one agent a goal. Let it call tools. Add a second agent to review the first. Create a supervisor to assign tasks, a fact-checker to verify results, and a router to decide which model should handle each step. Before long, the supposedly autonomous system has become a flowchart—just one whose boxes contain language models.</p>
+<p>That approach works, but it exposes a deeper problem: as agents become more capable, coordination becomes harder than execution.</p>
+<p>How does a system know when it has researched enough? When should disagreement trigger deeper investigation rather than another vote? When should multiple coding agents stop exploring alternatives and converge on a candidate? When is additional verification worth its cost? And how can the system answer those questions without encoding every possible decision in a central orchestrator?</p>
+<p>One possible answer is Quorum Signaling: a way for agents to communicate compact, structured indications of their local state, allowing the system to infer its global state and change behavior when meaningful thresholds are reached.</p>
+<h2 id="coordination-is-not-the-same-as-orchestration">Coordination is not the same as orchestration</h2>
+<p>Traditional orchestration tells components what to do and in what order. It is procedural: perform task A, send the result to task B, retry on failure, and escalate after three attempts.</p>
+<p>Coordination asks a different question: Given what the system collectively knows right now, what should happen next?</p>
+<p>That distinction matters because intelligent work rarely follows a perfectly predictable path. A research task may uncover an unexpected contradiction. Three agents may agree because they all relied on the same flawed source. A coding agent may produce a solution that compiles but violates an architectural constraint. A support case may appear routine until uncertainty and customer risk rise together.</p>
+<p>A fixed workflow can account for known branches. It struggles when the relevant condition is an evolving combination of confidence, contradiction, novelty, cost, risk, and evidence diversity.</p>
+<p>Quorum Signaling treats these conditions as first-class system data.</p>
+<h2 id="the-biological-inspiration">The biological inspiration</h2>
+<p>The name comes from quorum sensing in biological systems. Individual organisms can emit and detect simple chemical signals. No organism needs a complete map of the population, yet the accumulation of signals allows the group to change behavior when local activity reaches a meaningful collective threshold.</p>
+<p>The AI version is not a literal imitation. It borrows the organizing principle: local actors publish small signals; those signals accumulate into a representation of collective state; threshold crossings cause a change in behavior.</p>
+<p>An agent does not need to publish its entire reasoning trace. It might emit signals such as:</p>
+<p><code>uncertainty</code></p>
+<p><code>contradiction</code></p>
+<p><code>novelty</code></p>
+<p><code>cost_pressure</code></p>
+<p><code>verification_debt</code></p>
+<p><code>compile_success</code></p>
+<p><code>test_pass_rate</code></p>
+<p><code>edit_conflict</code></p>
+<p>Each signal can include a type, magnitude, source, timestamp, scope, and confidence weight. Signals can decay as they age, be weighted according to source reliability, and be evaluated within an object such as a claim, code change, research question, or support case.</p>
+<p>The point is not that every agent gets a vote. The point is that the system gains a compact, continuously updated description of what its agents are collectively encountering.</p>
+<h2 id="a-quorum-is-more-than-a-majority">A quorum is more than a majority</h2>
+<p>The word quorum can suggest voting: if three out of five agents agree, accept the answer. That is precisely the kind of fragile consensus this model is intended to improve upon.</p>
+<p>Agent agreement is not necessarily independent evidence. Five agents using the same model, prompt, retrieval source, or mistaken assumption can produce five correlated errors. Counting them as five separate votes creates the appearance of confidence without its substance.</p>
+<p>A multi-dimensional quorum instead evaluates a combination of conditions. A research system might converge only when:</p>
+<ul>
+<li>aggregate confidence is high;</li>
+<li>contradiction is below a defined threshold;</li>
+<li>source diversity is sufficient;</li>
+<li>novelty has begun to decline; and</li>
+<li>verification debt is within an acceptable range.</li>
+</ul>
+<p>If contradiction suddenly rises, the same system might move in the opposite direction and activate a verification agent. If novelty remains high, it might continue exploring. If cost pressure rises while new information falls, it might narrow the search or select a less expensive model.</p>
+<p>The quorum therefore represents a system state, not a winner.</p>
+<h2 id="what-quorumos-would-do">What QuorumOS would do</h2>
+<p>If Quorum Signaling is the coordination mechanism, QuorumOS is the proposed control plane around it.</p>
+<p>At a high level, the platform would allow teams to define five things:</p>
+<ul>
+<li><strong>Objects</strong> — the things being acted upon, such as claims, code changes, support cases, or decisions.</li>
+<li><strong>Signals</strong> — typed observations emitted by agents, tools, or human participants.</li>
+<li><strong>Aggregation</strong> — how signals are combined using weighting, rolling windows, hierarchy, and time decay.</li>
+<li><strong>Quorums</strong> — multi-variable conditions that describe meaningful system states.</li>
+<li><strong>Policies</strong> — actions triggered when those states are reached.</li>
+</ul>
+<p>The operating loop is straightforward:</p>
+<ol>
+<li>Agents emit structured signals.</li>
+<li>The signaling layer aggregates them over time.</li>
+<li>The quorum engine evaluates the current state.</li>
+<li>The policy engine triggers a behavioral change.</li>
+<li>The observability layer explains what happened and why.</li>
+</ol>
+<p>Possible actions include decomposition, escalation, suppression, spawning another agent, pruning a branch, changing verification intensity, transitioning to a new phase, or declaring convergence.</p>
+<p>This makes coordination logic reusable. Rather than rebuilding bespoke supervisory behavior inside every agent application, a team could configure and test it in a common control layer.</p>
+<h2 id="example-knowing-when-research-is-complete">Example: knowing when research is complete</h2>
+<p>Consider a research system composed of search, reading, synthesis, and fact-checking agents.</p>
+<p>At the beginning, search agents explore broadly. Reader agents evaluate sources and emit confidence, novelty, contradiction, and source-quality signals. As useful evidence accumulates, confidence may rise. As the search begins returning information the system has already seen, novelty may decline.</p>
+<p>If confidence is high, contradiction is low, source diversity is adequate, and novelty has flattened, the system reaches a synthesis quorum. It stops expanding the search and asks the synthesis agent to construct the answer.</p>
+<p>But suppose a newly retrieved primary source conflicts with the emerging conclusion. Contradiction spikes. The quorum state changes, synthesis pauses, and a fact-checking agent is activated. The system responds to the evidence it actually encounters rather than following a predetermined number of search rounds.</p>
+<h2 id="example-deciding-when-code-is-merge-ready">Example: deciding when code is merge-ready</h2>
+<p>Now imagine several development agents generating competing implementations.</p>
+<p>The relevant signals are different: compile success, test pass rate, test coverage, edit conflicts, architectural uncertainty, security findings, and cost. A merge-readiness quorum might require successful compilation, a sufficient test-pass rate, low unresolved conflict, acceptable uncertainty, and agreement across genuinely independent implementations.</p>
+<p>Failure density could trigger deeper diagnosis. Repeated architectural conflicts could activate an architecture review. Weak branches could be pruned. Rising cost pressure could throttle additional exploration. Only when the combined state meets the defined conditions would a candidate be promoted as merge-ready.</p>
+<p>Again, no individual signal makes the decision. Passing tests is necessary but may not be sufficient. Agent agreement is useful but may not be trustworthy without diversity. The result comes from the relationship among the signals.</p>
+<h2 id="why-a-separate-control-plane-matters">Why a separate control plane matters</h2>
+<p>Agent frameworks help developers create agents. Workflow tools connect steps. Message buses move events. Observability products record what happened. Voting systems select among outputs.</p>
+<p>QuorumOS would occupy a different layer: it would interpret distributed signals as system state and use that state to regulate behavior.</p>
+<p>That separation has several potential advantages:</p>
+<ul>
+<li><strong>Adaptability:</strong> behavior changes in response to current evidence instead of a fixed path.</li>
+<li><strong>Reduced redundancy:</strong> declining novelty can stop agents from repeating the same exploration.</li>
+<li><strong>Better fault tolerance:</strong> contradiction and diversity can matter as much as raw agreement.</li>
+<li><strong>Cost control:</strong> the system can adjust compute and verification intensity dynamically.</li>
+<li><strong>Explainability:</strong> quorum transitions can be recorded, replayed, and tied to the signals that caused them.</li>
+<li><strong>Reuse:</strong> coordination rules can be applied across different agent frameworks and domains.</li>
+</ul>
+<p>For administrators, the system becomes a place to define objects, signals, quorum rules, and policies. Operators get dashboards, signal histories, and explanations of state transitions. Developers integrate agents through APIs and SDKs without embedding all coordination logic in application code.</p>
+<h2 id="the-hard-parts-should-not-be-minimized">The hard parts should not be minimized</h2>
+<p>This is a proposed architecture, not a proven solution, and its hardest questions are the ones most worth exploring.</p>
+<p>First, thresholds may be brittle. A quorum tuned for one kind of research task may behave poorly on another. Static thresholds could simply relocate hard-coded workflow logic into a new configuration layer.</p>
+<p>Second, signals can be wrong or manipulated. An agent may be poorly calibrated, systematically overconfident, or incentivized to report the state most likely to keep its branch alive.</p>
+<p>Third, correlated failures remain dangerous. Source weighting and diversity constraints can reduce the problem, but only if the system can identify meaningful dependence among agents, models, prompts, tools, and evidence.</p>
+<p>Fourth, dynamic behavior can become difficult to debug. A rigid pipeline is limiting, but it is usually legible. An adaptive system needs excellent observability: signal provenance, policy explanations, state histories, replay, and simulation cannot be optional extras.</p>
+<p>Finally, coordination itself consumes resources. The signaling system must create more value through reduced duplication and better decisions than it adds in latency, complexity, and operational cost.</p>
+<p>These limitations do not invalidate the idea. They define the engineering and research agenda: learned or adaptive thresholds, better signal calibration, signal embeddings, causal diversity measures, simulation environments, and eventually reinforcement-learning approaches to policy selection.</p>
+<h2 id="from-workflows-to-living-systems">From workflows to living systems</h2>
+<p>The first generation of agentic systems has largely treated intelligence as something placed inside workflow boxes. The next generation may need to treat coordination as a continuous property of the system itself.</p>
+<p>Quorum Signaling offers one way to do that. Agents observe locally and report compact signals. The collective signal field describes the system’s changing state. Quorum rules recognize conditions that matter. Policies translate those conditions into action. QuorumOS, as a product concept, would make the entire mechanism programmable and visible.</p>
+<p>The important shift is subtle: the system is no longer asking only, What step comes next? It is asking, What is becoming true across the system, and what should change because of it?</p>
+<p>That may be the difference between a collection of agents following a workflow and a distributed intelligence capable of regulating itself.</p>
+<hr>
+<p>Author’s note: Quorum Signaling and QuorumOS are proposed concepts under development. The architecture, terminology, and implementation patterns described here should be treated as hypotheses to prototype, measure, and refine.</p>
+  </div>
+
+  
+
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>
