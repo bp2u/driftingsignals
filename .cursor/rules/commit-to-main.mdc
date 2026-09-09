@@ -1,0 +1,11 @@
+---
+description: Commit and push straight to main; no feature branches or PRs
+alwaysApply: true
+---
+
+# Deploy from main
+
+- Do all new work on `main`. Check it out and pull before committing if needed.
+- When asked to commit or push, commit on `main` and push `origin main`.
+- Do not create `cursor/` or other feature branches, and do not open a pull request, unless the user explicitly asks.
+- Cloudflare production deploys from `main`. A push to `main` is enough to update the live site.
