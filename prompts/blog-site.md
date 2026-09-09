@@ -9,6 +9,7 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 ## Inputs
 
 - Idea folders at `content/ideas/<slug>/`
+- Published essays live as a hub `idea.md` with the full article and frontmatter
 - Required hub file: `idea.md` with YAML frontmatter (`title`, `summary`, `date`, `tags`, `status`) and Markdown overview
 - Extra Markdown files in the same folder become hub documents (`title`, `summary`, optional `order`)
 - Files under `assets/` are downloadable attachments

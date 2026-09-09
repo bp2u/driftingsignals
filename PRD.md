@@ -57,7 +57,7 @@ Editorial reading layout. Cards on the home page. Light and dark themes, followi
 
 - Admin create/edit UI
 - Accounts, comments, search, or a database
-- Real idea content (placeholders until the three ideas are collected)
+- A CMS: published essays are added as folders, not through an editor
 
 ## Success
 
