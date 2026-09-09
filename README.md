@@ -37,11 +37,26 @@ Overview goes here.
 
 Add more Markdown files in the same folder and attachments under `assets/`. Refresh the home page. In debug mode, new folders appear without a restart.
 
-## Host (GitHub + Cloudflare)
+## Host (GitHub + Cloudflare Pages)
 
-Push to `main` on [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). In Cloudflare: Workers & Pages → Create → Import a Git repository → `bp2u/driftingsignals`.
+`python freeze.py` renders the Flask site into `build/` (gitignored). Cloudflare Pages serves that folder.
 
-This app is Flask, not a static folder. Cloudflare Pages will not run `gunicorn` by itself. Use that Git connection once the Cloudflare project is set to a Python/container worker, or add a static export later.
+Push to `main` on [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). In the Cloudflare project, set:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `python freeze.py` |
+| Build output directory | `build` |
+
+Pages already installs `requirements.txt` and reads `.python-version`. After a push, the build log should show Python install, `pip install`, then `Freezing site to .../build`.
+
+Preview the static site locally:
+
+```bash
+python freeze.py
+python -m http.server --directory build 8080
+```
 
 To run the Python process on another machine:
 

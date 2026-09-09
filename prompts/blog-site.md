@@ -24,12 +24,13 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 - Light and dark themes with a header toggle and `prefers-color-scheme` default
 - `run.py` for PyCharm / local debug
 - `wsgi.py` + gunicorn / Docker for a Python process
-- GitHub repo `bp2u/driftingsignals` as the deploy source for Cloudflare
+- `freeze.py` (Frozen-Flask) writing static files to `build/` for Cloudflare Pages
+- GitHub repo `bp2u/driftingsignals` as the deploy source; Pages build command `python freeze.py`, output `build`
 
 ## Dependencies
 
 - Python 3.12
-- Flask, python-frontmatter, Markdown, bleach, gunicorn, python-dotenv
+- Flask, Frozen-Flask, python-frontmatter, Markdown, bleach, gunicorn, python-dotenv
 
 ## Constraints
 

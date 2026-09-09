@@ -285,12 +285,11 @@ def _render_markdown(source: str, idea_slug: str) -> Markup:
 
 
 def _rewrite_asset_urls(html: str, idea_slug: str) -> str:
-    prefix = url_for("main.idea_asset", slug=idea_slug, filename="")
-
     def replace(match: re.Match[str]) -> str:
         url = match.group("url")
         filename = url.split("assets/", 1)[1]
-        return f'{match.group("attr")}="{prefix}{filename}"'
+        href = url_for("main.idea_asset", slug=idea_slug, filename=filename)
+        return f'{match.group("attr")}="{href}"'
 
     return _RELATIVE_SRC.sub(replace, html)
 
