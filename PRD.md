@@ -51,7 +51,7 @@ Authoring locally still uses `python run.py`. A Python process can run with `gun
 
 ## Appearance
 
-Editorial reading layout. Cards on the home page. Light and dark themes, following the system preference until the visitor toggles. The choice is stored in `localStorage`.
+Editorial reading layout. Cards on the home page. Tagline: “I'm just trying to keep up.” Home heading: “Musings and mutterings on stuff that is distracting me from real life.” Byline “By Brenden Portolese” links to https://www.linkedin.com/in/brendenportolese/ on the home page, idea pages, and footer. Light and dark themes, following the system preference until the visitor toggles. The choice is stored in `localStorage`.
 
 ## Out of scope (v1)
 

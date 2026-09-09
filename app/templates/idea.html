@@ -17,6 +17,7 @@
       {% if idea.is_draft %}<span class="badge">Draft</span>{% endif %}
     </div>
     <h1>{{ idea.title }}</h1>
+    {% include "byline.html" %}
     {% if idea.tags %}
       <ul class="tags">
         {% for tag in idea.tags %}

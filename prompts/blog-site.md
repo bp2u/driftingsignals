@@ -13,11 +13,12 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 - Required hub file: `idea.md` with YAML frontmatter (`title`, `summary`, `date`, `tags`, `status`) and Markdown overview
 - Extra Markdown files in the same folder become hub documents (`title`, `summary`, optional `order`)
 - Files under `assets/` are downloadable attachments
-- Environment: `SECRET_KEY`, `FLASK_DEBUG`, `HOST`, `PORT`, optional `CONTENT_DIR`, `SITE_NAME` (default: Drifting Signals), `SITE_TAGLINE`
+- Environment: `SECRET_KEY`, `FLASK_DEBUG`, `HOST`, `PORT`, optional `CONTENT_DIR`, `SITE_NAME` (default: Drifting Signals), `SITE_TAGLINE` (default: I'm just trying to keep up.), `SITE_AUTHOR` (default: Brenden Portolese), `SITE_AUTHOR_URL` (LinkedIn)
 
 ## Outputs
 
 - Home page of idea cards, newest first
+- Byline “By Brenden Portolese” linking to LinkedIn on the home page, idea hubs, documents, and footer
 - Idea hub page with overview, document list, and file list
 - Rendered Markdown pages with rewritten `assets/` links
 - Safe asset serving (no path traversal)

@@ -16,6 +16,8 @@ def inject_site():
     return {
         "site_name": current_app.config["SITE_NAME"],
         "site_tagline": current_app.config["SITE_TAGLINE"],
+        "site_author": current_app.config["SITE_AUTHOR"],
+        "site_author_url": current_app.config["SITE_AUTHOR_URL"],
     }
 
 
