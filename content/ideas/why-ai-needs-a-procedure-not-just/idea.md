@@ -1,7 +1,7 @@
 ---
 title: Why AI Needs a Procedure Not Just an Answer
 summary: "A procedure is an ordered system of actions, not a polished paragraph. Procedural AI should engineer that object first, then talk about it."
-date: 2026-09-09
+date: 2026-06-04
 tags: [procedures, rag, safety]
 status: published
 ---

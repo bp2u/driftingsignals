@@ -61,4 +61,4 @@ Editorial reading layout. Cards on the home page. Light and dark themes, followi
 
 ## Success
 
-A visitor can open the home page, enter an idea hub, read a related document, open an attachment, and switch themes. Adding a fourth folder appears on the home page without a code change.
+A visitor can open the home page, enter an idea hub, read a related document, open an attachment, and switch themes. Adding another folder appears on the home page without a code change.
