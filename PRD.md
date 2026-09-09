@@ -43,9 +43,9 @@ An admin UI is deferred. When it is added, it should write this same folder form
 
 ## Hosting
 
-Source of truth is the GitHub repo [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). Cloudflare Pages is the production host: connect that repo so pushes to `main` deploy.
+Source of truth is the GitHub repo [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). Cloudflare Workers (static assets) is the production host: connect that repo so pushes to `main` deploy.
 
-Pages cannot run Flask. `freeze.py` (Frozen-Flask) writes static HTML, CSS, JS, and idea assets into `build/`. The Cloudflare project must use build command `python freeze.py` and output directory `build`.
+Workers cannot run Flask. `freeze.py` writes static files into `build/`. [wrangler.jsonc](wrangler.jsonc) runs that freeze, then uploads `build/` as assets (`not_found_handling`: `404-page`).
 
 Authoring locally still uses `python run.py`. A Python process can run with `gunicorn --bind 0.0.0.0:8000 wsgi:app` or the included Dockerfile. Configure `SECRET_KEY`, `HOST`, and `PORT` through the environment when a server is used.
 

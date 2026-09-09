@@ -37,19 +37,13 @@ Overview goes here.
 
 Add more Markdown files in the same folder and attachments under `assets/`. Refresh the home page. In debug mode, new folders appear without a restart.
 
-## Host (GitHub + Cloudflare Pages)
+## Host (GitHub + Cloudflare Workers)
 
-`python freeze.py` renders the Flask site into `build/` (gitignored). Cloudflare Pages serves that folder.
+This is a Workers static-assets project, not a classic Pages output-directory site. `python freeze.py` writes HTML into `build/`. [wrangler.jsonc](wrangler.jsonc) tells Wrangler to run that freeze, then upload `build/`.
 
-Push to `main` on [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). In the Cloudflare project, set:
+Push to [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). Cloudflare already installs `requirements.txt` and Python from `.python-version`. Leave the deploy command as `npx wrangler deploy` (production) / `npx wrangler versions upload` (other branches). If the dashboard Worker name is not `driftingsignals`, change `"name"` in `wrangler.jsonc` to match.
 
-| Setting | Value |
-| --- | --- |
-| Production branch | `main` |
-| Build command | `python freeze.py` |
-| Build output directory | `build` |
-
-Pages already installs `requirements.txt` and reads `.python-version`. After a push, the build log should show Python install, `pip install`, then `Freezing site to .../build`.
+A good log shows `pip install`, then `Freezing site to .../build`, then Wrangler uploading assets. The previous failure (`Missing entry-point to Worker script or to assets directory`) meant Wrangler ran before any freeze and had nothing to publish.
 
 Preview the static site locally:
 
