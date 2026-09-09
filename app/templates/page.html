@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ document.page.title }} · {{ idea.title }}{% endblock %}
+{% block description %}{{ document.page.summary or idea.summary }}{% endblock %}
+
+{% block content %}
+<article class="wrap idea-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{ url_for('main.index') }}">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ url_for('main.idea_hub', slug=idea.slug) }}">{{ idea.title }}</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ document.page.title }}</span>
+  </nav>
+
+  <header class="hub-header">
+    <p class="eyebrow">{{ idea.title }}</p>
+    <h1>{{ document.page.title }}</h1>
+  </header>
+
+  <div class="prose">
+    {{ document.html }}
+  </div>
+</article>
+{% endblock %}

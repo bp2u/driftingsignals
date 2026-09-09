@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="hero wrap">
+  <p class="eyebrow">Idea notebook</p>
+  <h1>A growing shelf of AI experiments.</h1>
+  <p class="lede">Each idea is a hub: an overview plus the notes, sketches, and files that belong with it. New folders show up here automatically.</p>
+</section>
+
+<section class="wrap idea-index" aria-label="Ideas">
+  {% if ideas %}
+    <ul class="idea-grid">
+      {% for idea in ideas %}
+        <li>
+          <article class="idea-card">
+            <a class="card-link" href="{{ url_for('main.idea_hub', slug=idea.slug) }}">
+              <div class="card-meta">
+                <time datetime="{{ idea.date.isoformat() }}">{{ idea.date.strftime("%b %-d, %Y") }}</time>
+                {% if idea.is_draft %}<span class="badge">Draft</span>{% endif %}
+              </div>
+              <h2>{{ idea.title }}</h2>
+              <p>{{ idea.summary }}</p>
+              <div class="card-footer">
+                {% if idea.tags %}
+                  <ul class="tags">
+                    {% for tag in idea.tags %}
+                      <li>{{ tag }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                <span class="file-count">{{ idea.file_count }} file{% if idea.file_count != 1 %}s{% endif %}</span>
+              </div>
+            </a>
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty-state">
+      <h2>No ideas yet</h2>
+      <p>Create <code>content/ideas/your-slug/idea.md</code> and refresh this page.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

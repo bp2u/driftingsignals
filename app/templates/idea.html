@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ idea.title }} · {{ site_name }}{% endblock %}
+{% block description %}{{ idea.summary }}{% endblock %}
+
+{% block content %}
+<article class="wrap idea-hub">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{ url_for('main.index') }}">Ideas</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ idea.title }}</span>
+  </nav>
+
+  <header class="hub-header">
+    <div class="card-meta">
+      <time datetime="{{ idea.date.isoformat() }}">{{ idea.date.strftime("%b %-d, %Y") }}</time>
+      {% if idea.is_draft %}<span class="badge">Draft</span>{% endif %}
+    </div>
+    <h1>{{ idea.title }}</h1>
+    {% if idea.tags %}
+      <ul class="tags">
+        {% for tag in idea.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ idea.overview_html }}
+  </div>
+
+  {% if idea.pages %}
+    <section class="related" aria-labelledby="docs-heading">
+      <h2 id="docs-heading">Documents</h2>
+      <ul class="file-list">
+        {% for page in idea.pages %}
+          <li>
+            <a href="{{ url_for('main.idea_page', slug=idea.slug, page=page.slug) }}">
+              <span class="file-title">{{ page.title }}</span>
+              {% if page.summary %}<span class="file-summary">{{ page.summary }}</span>{% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if idea.assets %}
+    <section class="related" aria-labelledby="assets-heading">
+      <h2 id="assets-heading">Files</h2>
+      <ul class="file-list assets">
+        {% for asset in idea.assets %}
+          <li>
+            <a href="{{ url_for('main.idea_asset', slug=idea.slug, filename=asset.relpath) }}">
+              <span class="file-title">{{ asset.name }}</span>
+              <span class="file-summary">{{ asset.kind }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+</article>
+{% endblock %}

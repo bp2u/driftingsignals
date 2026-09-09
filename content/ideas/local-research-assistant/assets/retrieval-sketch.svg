@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-label="Notes become chunks, then an answer with citations">
+  <rect width="720" height="220" rx="16" fill="#ece4d6"/>
+  <rect x="28" y="48" width="140" height="124" rx="12" fill="#fffdf8" stroke="#0f5c4c"/>
+  <text x="98" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1d1914">Notes</text>
+  <rect x="220" y="48" width="140" height="124" rx="12" fill="#fffdf8" stroke="#0f5c4c"/>
+  <text x="290" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1d1914">Chunks</text>
+  <rect x="412" y="48" width="140" height="124" rx="12" fill="#fffdf8" stroke="#0f5c4c"/>
+  <text x="482" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1d1914">Index</text>
+  <rect x="552" y="48" width="140" height="124" rx="12" fill="#0f5c4c"/>
+  <text x="622" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f4efe6">Answer</text>
+</svg>

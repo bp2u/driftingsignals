@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="{% block description %}{{ site_tagline }}{% endblock %}">
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{{ url_for('main.index') }}">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">{{ site_name }}</span>
+          <span class="brand-tagline">{{ site_tagline }}</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="{{ url_for('main.index') }}">Ideas</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Add a folder under <code>content/ideas/</code> to publish another idea.</p>
+    </div>
+  </footer>
+  <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+</body>
+</html>
