@@ -1,4 +1,4 @@
-# Emergent Signal
+# Drifting Signals
 
 A Flask site for publishing AI ideas. Each idea is a folder: an overview plus the notes and files that belong with it.
 
@@ -37,11 +37,20 @@ Overview goes here.
 
 Add more Markdown files in the same folder and attachments under `assets/`. Refresh the home page. In debug mode, new folders appear without a restart.
 
-## Host (GitHub + Cloudflare)
+## Host (GitHub + Cloudflare Workers)
 
-Push to `main` on [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). In Cloudflare: Workers & Pages → Create → Import a Git repository → `bp2u/driftingsignals`.
+This is a Workers static-assets project, not a classic Pages output-directory site. `python freeze.py` writes HTML into `build/`. [wrangler.jsonc](wrangler.jsonc) tells Wrangler to run that freeze, then upload `build/`.
 
-This app is Flask, not a static folder. Cloudflare Pages will not run `gunicorn` by itself. Use that Git connection once the Cloudflare project is set to a Python/container worker, or add a static export later.
+Push to [bp2u/driftingsignals](https://github.com/bp2u/driftingsignals). Cloudflare already installs `requirements.txt` and Python from `.python-version`. Leave the deploy command as `npx wrangler deploy` (production) / `npx wrangler versions upload` (other branches). If the dashboard Worker name is not `driftingsignals`, change `"name"` in `wrangler.jsonc` to match.
+
+A good log shows `pip install`, then `Freezing site to .../build`, then Wrangler uploading assets. The previous failure (`Missing entry-point to Worker script or to assets directory`) meant Wrangler ran before any freeze and had nothing to publish.
+
+Preview the static site locally:
+
+```bash
+python freeze.py
+python -m http.server --directory build 8080
+```
 
 To run the Python process on another machine:
 
@@ -56,8 +65,8 @@ gunicorn --bind 0.0.0.0:8000 wsgi:app
 Or build the image:
 
 ```bash
-docker build -t emergent-signal .
-docker run --rm -p 8000:8000 -e SECRET_KEY=a-long-random-value emergent-signal
+docker build -t drifting-signals .
+docker run --rm -p 8000:8000 -e SECRET_KEY=a-long-random-value drifting-signals
 ```
 
 ## Theme

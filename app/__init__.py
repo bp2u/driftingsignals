@@ -22,7 +22,7 @@ def create_app() -> Flask:
     app.config.from_mapping(
         SECRET_KEY=os.environ.get("SECRET_KEY", "dev-only-change-me"),
         CONTENT_DIR=content_dir,
-        SITE_NAME=os.environ.get("SITE_NAME", "Emergent Signal"),
+        SITE_NAME=os.environ.get("SITE_NAME", "Drifting Signals"),
         SITE_TAGLINE=os.environ.get(
             "SITE_TAGLINE", "Notes and experiments with language models"
         ),
