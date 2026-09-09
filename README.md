@@ -1,4 +1,4 @@
-# Emergent Signal
+# Drifting Signals
 
 A Flask site for publishing AI ideas. Each idea is a folder: an overview plus the notes and files that belong with it.
 
@@ -56,8 +56,8 @@ gunicorn --bind 0.0.0.0:8000 wsgi:app
 Or build the image:
 
 ```bash
-docker build -t emergent-signal .
-docker run --rm -p 8000:8000 -e SECRET_KEY=a-long-random-value emergent-signal
+docker build -t drifting-signals .
+docker run --rm -p 8000:8000 -e SECRET_KEY=a-long-random-value drifting-signals
 ```
 
 ## Theme

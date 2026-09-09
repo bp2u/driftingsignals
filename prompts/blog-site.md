@@ -1,4 +1,4 @@
-# Rebuild prompt: Emergent Signal
+# Rebuild prompt: Drifting Signals
 
 Use this prompt to rebuild the site from scratch.
 
@@ -12,7 +12,7 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 - Required hub file: `idea.md` with YAML frontmatter (`title`, `summary`, `date`, `tags`, `status`) and Markdown overview
 - Extra Markdown files in the same folder become hub documents (`title`, `summary`, optional `order`)
 - Files under `assets/` are downloadable attachments
-- Environment: `SECRET_KEY`, `FLASK_DEBUG`, `HOST`, `PORT`, optional `CONTENT_DIR`, `SITE_NAME` (default: Emergent Signal), `SITE_TAGLINE`
+- Environment: `SECRET_KEY`, `FLASK_DEBUG`, `HOST`, `PORT`, optional `CONTENT_DIR`, `SITE_NAME` (default: Drifting Signals), `SITE_TAGLINE`
 
 ## Outputs
 

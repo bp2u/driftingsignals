@@ -1,4 +1,4 @@
-# Emergent Signal — PRD
+# Drifting Signals — PRD
 
 ## Purpose
 
