@@ -4,7 +4,7 @@
 
 - Folder: `content/ideas/the-anchor-model/`
 - Hub: `idea.md` (short thesis and reading order)
-- Documents: executive brief, architecture, software development, feature spec lifecycle, challenges
+- Documents: executive brief, architecture (including Appendix A domain mappings and Appendix B related work), software development, feature spec lifecycle, challenges
 - Do not publish the AI-assistant appendix on the blog; keep it here
 
 ## Inputs / outputs

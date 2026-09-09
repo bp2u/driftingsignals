@@ -1,7 +1,7 @@
 ---
 title: The Anchor Model
 summary: "An organizational architecture for AI-enabled work. Humans own truth; AI authors its representation."
-date: 2026-09-07
+date: 2026-09-09
 tags: [org-design, governance, sdlc]
 status: published
 ---
@@ -20,4 +20,4 @@ Drift is not automatically failure. A divergence can be a mistake, a one-time ex
 
 Software development is the first worked example. The same pattern is meant to apply anywhere AI does meaningful knowledge work.
 
-**Read in this order** if you are new to it: the executive brief, then the architecture paper. Use the software and feature-spec documents when you want the SDLC version. Use the challenges page when you want the skeptical version.
+**Read in this order** if you are new to it: the executive brief, then the architecture paper. Use the software and feature-spec documents when you want the SDLC version. Use the challenges page when you want the skeptical version. Appendix B of the architecture paper covers related 2026 work and what should not be claimed as distinctive.

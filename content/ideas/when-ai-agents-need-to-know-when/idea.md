@@ -1,7 +1,7 @@
 ---
 title: When AI Agents Need to Know When to Stop
 summary: "Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumOS is the control plane that could make that model programmable, observable, and reusable."
-date: 2026-09-09
+date: 2026-08-23
 tags: [agents, quorum, coordination]
 status: published
 ---

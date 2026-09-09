@@ -24,7 +24,11 @@ def create_app() -> Flask:
         CONTENT_DIR=content_dir,
         SITE_NAME=os.environ.get("SITE_NAME", "Drifting Signals"),
         SITE_TAGLINE=os.environ.get(
-            "SITE_TAGLINE", "Notes and experiments with language models"
+            "SITE_TAGLINE", "I'm just trying to keep up."
+        ),
+        SITE_AUTHOR=os.environ.get("SITE_AUTHOR", "Brenden Portolese"),
+        SITE_AUTHOR_URL=os.environ.get(
+            "SITE_AUTHOR_URL", "https://www.linkedin.com/in/brendenportolese/"
         ),
     )
 

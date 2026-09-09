@@ -221,6 +221,25 @@ h3 {
   font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
+.byline {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.byline a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.byline a:hover {
+  color: var(--accent);
+}
+
+.hero .byline {
+  margin-bottom: 1rem;
+}
+
 .lede,
 .empty-state p {
   margin: 0;
