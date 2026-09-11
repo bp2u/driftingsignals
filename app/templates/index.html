@@ -4,13 +4,13 @@
 
 {% block content %}
 <section class="hero wrap">
-  <p class="eyebrow">Idea notebook</p>
-  <h1>Musings and mutterings on stuff that is distracting me from real life.</h1>
+  <p class="eyebrow">Blog entries</p>
+  <h1>Mutterings and soft cursings on AI</h1>
   {% include "byline.html" %}
-  <p class="lede">Each idea is a hub: an overview plus the notes, sketches, and files that belong with it. New folders show up here automatically.</p>
+  <p class="lede">Each entry is a hub: an overview plus the notes, sketches, and files that belong with it. New folders show up here automatically.</p>
 </section>
 
-<section class="wrap idea-index" aria-label="Ideas">
+<section class="wrap idea-index" aria-label="Blog entries">
   {% if ideas %}
     <ul class="idea-grid">
       {% for idea in ideas %}
@@ -40,7 +40,7 @@
     </ul>
   {% else %}
     <div class="empty-state">
-      <h2>No ideas yet</h2>
+      <h2>No blog entries yet</h2>
       <p>Create <code>content/ideas/your-slug/idea.md</code> and refresh this page.</p>
     </div>
   {% endif %}

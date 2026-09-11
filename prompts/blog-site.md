@@ -4,7 +4,7 @@ Use this prompt to rebuild the site from scratch.
 
 ## Goal
 
-Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea is a hub (overview + related files). The site must expand by adding folders. It must run locally. Production source of truth is GitHub (`bp2u/driftingsignals`); Cloudflare is the intended host and should sync from that repo.
+Build a Python Flask + Jinja blog-style site that displays AI blog entries. Each entry is a hub (overview + related files). Visitor-facing labels say “Blog entries”, not “Ideas”. Home heading: “Mutterings and soft cursings on AI”. Tagline: “I'm just trying to keep up.” The site must expand by adding folders. It must run locally. Production source of truth is GitHub (`bp2u/driftingsignals`); Cloudflare is the intended host and should sync from that repo.
 
 ## Inputs
 
@@ -17,7 +17,7 @@ Build a Python Flask + Jinja blog-style site that displays AI ideas. Each idea i
 
 ## Outputs
 
-- Home page of idea cards, newest first
+- Home page of blog-entry cards, newest first. Heading: “Mutterings and soft cursings on AI”. Nav/breadcrumbs labeled “Blog entries”.
 - Byline “By Brenden Portolese” linking to LinkedIn on the home page, idea hubs, documents, and footer
 - Idea hub page with overview, document list, and file list
 - Rendered Markdown pages with rewritten `assets/` links

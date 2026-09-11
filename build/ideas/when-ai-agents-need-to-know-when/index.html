@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumOS is the control plane that could make that model programmable, observable, and reusable.">
-  <title>When AI Agents Need to Know When to Stop · Drifting Signals</title>
+  <meta name="description" content="Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumPlane is the control plane that could make that model programmable, observable, and reusable.">
+  <title>The Case for Quorum Signaling · Drifting Signals</title>
   <script>
     (function () {
       try {
@@ -33,7 +33,7 @@
       </a>
       <div class="header-actions">
         <nav class="site-nav" aria-label="Primary">
-          <a href="/">Ideas</a>
+          <a href="/">Blog entries</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
           <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
@@ -51,9 +51,9 @@
     
 <article class="wrap idea-hub">
   <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Ideas</a>
+    <a href="/">Blog entries</a>
     <span aria-hidden="true">/</span>
-    <span>When AI Agents Need to Know When to Stop</span>
+    <span>The Case for Quorum Signaling</span>
   </nav>
 
   <header class="hub-header">
@@ -61,7 +61,7 @@
       <time datetime="2026-08-23">Aug 23, 2026</time>
       
     </div>
-    <h1>When AI Agents Need to Know When to Stop</h1>
+    <h1>The Case for Quorum Signaling</h1>
     <p class="byline">
   By
   <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
@@ -118,8 +118,8 @@
 </ul>
 <p>If contradiction suddenly rises, the same system might move in the opposite direction and activate a verification agent. If novelty remains high, it might continue exploring. If cost pressure rises while new information falls, it might narrow the search or select a less expensive model.</p>
 <p>The quorum therefore represents a system state, not a winner.</p>
-<h2 id="what-quorumos-would-do">What QuorumOS would do</h2>
-<p>If Quorum Signaling is the coordination mechanism, QuorumOS is the proposed control plane around it.</p>
+<h2 id="what-quorumplane-would-do">What QuorumPlane would do</h2>
+<p>If Quorum Signaling is the coordination mechanism, QuorumPlane is the proposed control plane around it.</p>
 <p>At a high level, the platform would allow teams to define five things:</p>
 <ul>
 <li><strong>Objects</strong> — the things being acted upon, such as claims, code changes, support cases, or decisions.</li>
@@ -150,7 +150,7 @@
 <p>Again, no individual signal makes the decision. Passing tests is necessary but may not be sufficient. Agent agreement is useful but may not be trustworthy without diversity. The result comes from the relationship among the signals.</p>
 <h2 id="why-a-separate-control-plane-matters">Why a separate control plane matters</h2>
 <p>Agent frameworks help developers create agents. Workflow tools connect steps. Message buses move events. Observability products record what happened. Voting systems select among outputs.</p>
-<p>QuorumOS would occupy a different layer: it would interpret distributed signals as system state and use that state to regulate behavior.</p>
+<p>QuorumPlane would occupy a different layer: it would interpret distributed signals as system state and use that state to regulate behavior.</p>
 <p>That separation has several potential advantages:</p>
 <ul>
 <li><strong>Adaptability:</strong> behavior changes in response to current evidence instead of a fixed path.</li>
@@ -171,11 +171,12 @@
 <p>These limitations do not invalidate the idea. They define the engineering and research agenda: learned or adaptive thresholds, better signal calibration, signal embeddings, causal diversity measures, simulation environments, and eventually reinforcement-learning approaches to policy selection.</p>
 <h2 id="from-workflows-to-living-systems">From workflows to living systems</h2>
 <p>The first generation of agentic systems has largely treated intelligence as something placed inside workflow boxes. The next generation may need to treat coordination as a continuous property of the system itself.</p>
-<p>Quorum Signaling offers one way to do that. Agents observe locally and report compact signals. The collective signal field describes the system’s changing state. Quorum rules recognize conditions that matter. Policies translate those conditions into action. QuorumOS, as a product concept, would make the entire mechanism programmable and visible.</p>
+<p>Quorum Signaling offers one way to do that. Agents observe locally and report compact signals. The collective signal field describes the system’s changing state. Quorum rules recognize conditions that matter. Policies translate those conditions into action. QuorumPlane, as a product concept, would make the entire mechanism programmable and visible.</p>
 <p>The important shift is subtle: the system is no longer asking only, What step comes next? It is asking, What is becoming true across the system, and what should change because of it?</p>
 <p>That may be the difference between a collection of agents following a workflow and a distributed intelligence capable of regulating itself.</p>
 <hr>
-<p>Author’s note: Quorum Signaling and QuorumOS are proposed concepts under development. The architecture, terminology, and implementation patterns described here should be treated as hypotheses to prototype, measure, and refine.</p>
+<p>Author’s note: Quorum Signaling and QuorumPlane are proposed concepts under development. The architecture, terminology, and implementation patterns described here should be treated as hypotheses to prototype, measure, and refine.</p>
+<p>Follow-up: <a href="/ideas/quorum-signaling-isnt-new/">Quorum Signaling Isn't New. The Control Plane Might Be.</a></p>
   </div>
 
   

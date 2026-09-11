@@ -1,6 +1,6 @@
 ---
-title: When AI Agents Need to Know When to Stop
-summary: "Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumOS is the control plane that could make that model programmable, observable, and reusable."
+title: The Case for Quorum Signaling
+summary: "Quorum Signaling is a proposed coordination model for multi-agent AI systems. QuorumPlane is the control plane that could make that model programmable, observable, and reusable."
 date: 2026-08-23
 tags: [agents, quorum, coordination]
 status: published
@@ -74,9 +74,9 @@ If contradiction suddenly rises, the same system might move in the opposite dire
 
 The quorum therefore represents a system state, not a winner.
 
-## What QuorumOS would do
+## What QuorumPlane would do
 
-If Quorum Signaling is the coordination mechanism, QuorumOS is the proposed control plane around it.
+If Quorum Signaling is the coordination mechanism, QuorumPlane is the proposed control plane around it.
 
 At a high level, the platform would allow teams to define five things:
 
@@ -122,7 +122,7 @@ Again, no individual signal makes the decision. Passing tests is necessary but m
 
 Agent frameworks help developers create agents. Workflow tools connect steps. Message buses move events. Observability products record what happened. Voting systems select among outputs.
 
-QuorumOS would occupy a different layer: it would interpret distributed signals as system state and use that state to regulate behavior.
+QuorumPlane would occupy a different layer: it would interpret distributed signals as system state and use that state to regulate behavior.
 
 That separation has several potential advantages:
 
@@ -155,7 +155,7 @@ These limitations do not invalidate the idea. They define the engineering and re
 
 The first generation of agentic systems has largely treated intelligence as something placed inside workflow boxes. The next generation may need to treat coordination as a continuous property of the system itself.
 
-Quorum Signaling offers one way to do that. Agents observe locally and report compact signals. The collective signal field describes the system’s changing state. Quorum rules recognize conditions that matter. Policies translate those conditions into action. QuorumOS, as a product concept, would make the entire mechanism programmable and visible.
+Quorum Signaling offers one way to do that. Agents observe locally and report compact signals. The collective signal field describes the system’s changing state. Quorum rules recognize conditions that matter. Policies translate those conditions into action. QuorumPlane, as a product concept, would make the entire mechanism programmable and visible.
 
 The important shift is subtle: the system is no longer asking only, What step comes next? It is asking, What is becoming true across the system, and what should change because of it?
 
@@ -163,4 +163,6 @@ That may be the difference between a collection of agents following a workflow a
 
 ---
 
-Author’s note: Quorum Signaling and QuorumOS are proposed concepts under development. The architecture, terminology, and implementation patterns described here should be treated as hypotheses to prototype, measure, and refine.
+Author’s note: Quorum Signaling and QuorumPlane are proposed concepts under development. The architecture, terminology, and implementation patterns described here should be treated as hypotheses to prototype, measure, and refine.
+
+Follow-up: [Quorum Signaling Isn't New. The Control Plane Might Be.](/ideas/quorum-signaling-isnt-new/)
