@@ -1,10 +1,10 @@
-# Rebuild prompt: Everyone Is Building the Doors. Nobody Is Building the Kitchen.
+# Rebuild prompt: Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together.
 
 Use this prompt to rebuild the essay from scratch.
 
 ## Goal
 
-Publish a Drifting Signals essay titled **Everyone Is Building the Doors. Nobody Is Building the Kitchen.** The argument: agent standards (MCP, A2A, Personal Agent Protocol) are plumbing — pantry, ticket rail, and front door. The missing layer is kitchen call-outs, which is **Quorum Signaling**. Governance-style voting is a staff meeting; most agent decisions should come from accumulating short signals. Do not use QuorumOS.
+Publish a Drifting Signals essay titled **Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together.** The argument: agent standards (MCP, A2A, Personal Agent Protocol) are plumbing — pantry, ticket rail, and front door. The missing layer is kitchen call-outs, which is **Quorum Signaling**. Governance-style voting is a staff meeting; most agent decisions should come from accumulating short signals. Do not use QuorumOS. Keep this title's capitalization, including lowercase "door".
 
 ## Inputs
 
@@ -19,7 +19,8 @@ Publish a Drifting Signals essay titled **Everyone Is Building the Doors. Nobody
 
 ## Outputs
 
-- Title and card summary: doors are being standardized; the missing layer is call-outs (Quorum Signaling)
+- Title, exactly: Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together.
+- Card summary: doors are being standardized; the missing layer is call-outs (Quorum Signaling)
 - Body without a duplicate H1 or a date/byline line (the template already shows those)
 - Kitchen mapping: MCP = pantry and tools, A2A = ticket rail, Personal Agent Protocol = front door, Quorum Signaling = call-outs
 - Kang & Diponegoro governance-gap paper (arXiv 2606.31498), linked once as “a great paper,” not letter by letter

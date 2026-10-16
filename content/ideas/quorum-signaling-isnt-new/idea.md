@@ -91,4 +91,4 @@ The gap isn't the idea. Three unrelated fields have validated the biological met
 
 *Author's note: as with the original post, Quorum Signaling and QuorumPlane remain proposed concepts under development. This survey is not exhaustive — it reflects what surfaced in a focused search, not a systematic literature review. Framework and tool capabilities described above are as I understand them at time of writing and change quickly.*
 
-Follow-up: [Everyone Is Building the Doors. Nobody Is Building the Kitchen.](/ideas/everyone-is-building-the-doors-nobody-is-building-the-kitchen/)
+Follow-up: [Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together.](/ideas/everyone-is-building-the-doors-nobody-is-building-the-kitchen/)

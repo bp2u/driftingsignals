@@ -23,7 +23,7 @@ Publish a Drifting Signals follow-up to **The Case for Quorum Signaling**. Title
 - Relative link back to `/ideas/when-ai-agents-need-to-know-when/`
 - Kitchen metaphor; robotics/security prior art; MACI, BNE, pressure fields, stigmergy; tool-layer gap (LangGraph, AutoGen, CrewAI, Temporal, observability); absorption risk; three spec changes (MACI plateau default, signal visibility, economic termination); references; author’s note
 - A follow-up line on the original Quorum Signaling essay
-- End with a follow-up link to `/ideas/everyone-is-building-the-doors-nobody-is-building-the-kitchen/` (*Everyone Is Building the Doors. Nobody Is Building the Kitchen.*)
+- End with a follow-up link to `/ideas/everyone-is-building-the-doors-nobody-is-building-the-kitchen/` (*Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together.*)
 
 ## Dependencies
 

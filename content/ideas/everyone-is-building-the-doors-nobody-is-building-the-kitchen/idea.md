@@ -1,5 +1,5 @@
 ---
-title: "Everyone Is Building the Doors. Nobody Is Building the Kitchen."
+title: "Everyone's Standardizing How AI Agents Get In the door. Nobody's Standardizing How They Work Together."
 summary: "Everyone is racing to standardize how AI agents get through the door. The missing layer is the kitchen call-outs: how a group of agents knows what to do next. That's Quorum Signaling."
 date: 2026-10-16
 tags: [agents, quorum, coordination, protocols]
