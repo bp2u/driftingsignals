@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Everyone is racing to standardize how AI agents get through the door. The missing layer is the kitchen call-outs: how a group of agents knows what to do next. That&#39;s Quorum Signaling.">
+  <title>Everyone Is Building the Doors. Nobody Is Building the Kitchen. · Drifting Signals</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">Drifting Signals</span>
+          <span class="brand-tagline">I&#39;m just trying to keep up.</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">Blog entries</a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.8 13.6A7 7 0 0 1 10.4 5a7 7 0 1 0 6.4 8.6Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="site-main">
+    
+<article class="wrap idea-hub">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Blog entries</a>
+    <span aria-hidden="true">/</span>
+    <span>Everyone Is Building the Doors. Nobody Is Building the Kitchen.</span>
+  </nav>
+
+  <header class="hub-header">
+    <div class="card-meta">
+      <time datetime="2026-10-16">Oct 16, 2026</time>
+      
+    </div>
+    <h1>Everyone Is Building the Doors. Nobody Is Building the Kitchen.</h1>
+    <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    
+      <ul class="tags">
+        
+          <li>agents</li>
+        
+          <li>quorum</li>
+        
+          <li>coordination</li>
+        
+          <li>protocols</li>
+        
+      </ul>
+    
+  </header>
+
+  <div class="prose">
+    <h2 id="the-race-to-build-the-front-door">The race to build the front door</h2>
+<p>On October 6, Meta and Sierra announced something called the Personal Agent Protocol. Walmart, Shopify and Stripe signed on as founding partners. The pitch is simple: if your AI assistant wants to shop, book or return something on your behalf, there should be one standard way for it to knock on a store's door and say who it is.</p>
+<p>The timing wasn't an accident. About two weeks earlier, Amazon had started blocking Meta's new assistant, Muse, from its site. Meta's response, roughly: if you turn away my agent, you're turning away the customer behind it.</p>
+<p>That little standoff is a good snapshot of where AI is right now. Everyone agrees agents are coming. So everyone is racing to agree on the doors: how agents get in, what they're allowed to touch, and how they prove who sent them.</p>
+<p>Those doors matter. But I think the industry is skipping a harder question. Once a bunch of agents are inside, working on the same problem, how do they know what the group as a whole should do next?</p>
+<h2 id="think-of-it-as-a-restaurant-kitchen">Think of it as a restaurant kitchen</h2>
+<p>The alphabet soup of agent standards gets confusing fast, so here's the picture I use. Imagine a busy restaurant kitchen where every cook is an AI agent.</p>
+<p>Over the past two years, the industry has standardized three big pieces of that kitchen:</p>
+<ul>
+<li><strong>The pantry and the tools.</strong> Anthropic's Model Context Protocol, usually called MCP, is how a single agent reaches its tools and data: a database, a calendar, a file. In kitchen terms, it's how a cook grabs a knife or pulls something from the walk-in. It answers one question: <em>what can this cook do?</em></li>
+<li><strong>The ticket rail.</strong> Google's Agent-to-Agent protocol, or A2A, is how one agent finds another and hands it a job. It's the ticket that goes from one station to the next. It answers: <em>which cook should handle this order?</em></li>
+<li><strong>The front door.</strong> The new Personal Agent Protocol is about identity. It lets a store check that a visiting agent is really working for a real customer, and decide what it's allowed to do. It answers: <em>who is this, and are they allowed in?</em></li>
+</ul>
+<p>All three are useful. All three are basically plumbing. They move requests, tools and tickets from one place to another.</p>
+<p>What none of them does is help the kitchen <em>run</em>.</p>
+<h2 id="the-missing-layer">The missing layer</h2>
+<p>Anyone who has worked a real kitchen knows the hard part isn't the knives or the ticket printer. It's the running conversation. "Behind!" "Eighty-six the salmon." "Two minutes on table six." That steady stream of short call-outs is how a dozen people who can each see only their own station act like one team.</p>
+<p>Agents don't have that yet. And I'm not the only one who thinks so.</p>
+<p>In June, <a href="https://arxiv.org/pdf/2606.31498">a great paper</a> was published that checked five of the major agent protocols, including MCP and A2A, against a list of things a group of agents would need to make decisions together. Things like: who's part of this decision? How do agents disagree with each other? When does a human get pulled in? Can we replay what happened afterward?</p>
+<p>The results were interesting. Not one protocol could handle voting or keep a record of disagreement. Most of the other items were missing or only half there. Their conclusion was that this isn't a feature someone forgot. It's an entire layer that doesn't exist yet.</p>
+<p>In kitchen terms: we've built a great pantry, a great ticket rail and a great front door. Nobody has built the call-outs.</p>
+<h2 id="staff-meeting-or-call-outs">Staff meeting, or call-outs?</h2>
+<p>Here's what I'm seeing. The paper agrees a layer is missing, but its idea of what belongs there looks a lot like a meeting. The authors borrow from parliamentary procedure. Agents get admitted to a decision, raise formal challenges, cast votes and file dissents for the record.</p>
+<p>For some decisions, that makes sense. If five agents are deciding whether a system passes a compliance review, I want a formal vote, a written record and the dissenting opinion preserved. That's a decision worth slowing down for.</p>
+<p>But most of what happens in a kitchen isn't a meeting. Nobody calls a vote on whether the fryer is too hot. A cook says "fryer's running hot," another says "yeah, I'm seeing it too," and the kitchen adjusts. No single call-out decides anything. Enough of them, pointing to the same thing, and the whole room changes what it's doing.</p>
+<p>Nature figured this out long ago. Bacteria use something called quorum sensing: (yeah I'm bringing this up again.) each one releases a tiny chemical signal, and when enough of that signal builds up in the area, the whole colony switches behavior at once. No bacterium sees the big picture. None of them votes. The group still acts together.</p>
+<p>That's the model I've been calling <strong>Quorum Signaling</strong>. And I think a lot of agent decisions look more like the fryer than the compliance review:</p>
+<ul>
+<li>Has our research turned up enough to stop searching?</li>
+<li>Are these agents all agreeing because they're right, or because they all read the same bad source?</li>
+<li>Is this task getting expensive enough that we should switch to a cheaper approach?</li>
+<li>Is something going wrong that a human should look at?</li>
+</ul>
+<p>None of those should wait for a vote. They should come from a steady stream of small signals that add up.</p>
+<h2 id="what-the-call-outs-would-look-like">What the call-outs would look like</h2>
+<p>In practice, a signaling layer is simpler than it sounds. It comes down to four steps.</p>
+<ol>
+<li><strong>Agents call out what they're noticing.</strong> Not their whole chain of reasoning, just a short labeled signal. "I'm uncertain." "This contradicts what we found earlier." "I'm not finding anything new." "This is getting expensive."</li>
+<li><strong>The signals add up.</strong> Each call-out has a strength, and older ones fade over time (decay), the way "fryer's hot" from an hour ago matters less than one from ten seconds ago.</li>
+<li><strong>Thresholds trip.</strong> When the right combination of signals crosses a line, the group's state changes. For example: confidence is high, new findings have dried up and nobody's flagging contradictions. That means the research is done.</li>
+<li><strong>The kitchen reacts.</strong> Stop searching. Bring in a fact-checker. Switch to a cheaper model. Get a human.</li>
+</ol>
+<p>The nice part is that this doesn't replace the plumbing. It rides on top of it. Agents could still use MCP to grab their tools and A2A to pass tickets. The call-outs would just be one more kind of message going across the same rail.</p>
+<p>And the two ideas, call-outs and staff meetings, fit together well. The call-outs could be what decides when it's time to <em>hold</em> a meeting. The paper itself includes an example of sending a decision to a human when the group's average confidence drops too low. That's a call-out tripping a threshold, sitting right inside a governance design.</p>
+<h2 id="fair-objections">Fair objections</h2>
+<p>Here are some things I still need to work through. Please send me your thoughts and comments on this stuff.</p>
+<p><strong>"Agent frameworks already handle this."</strong> Partly true. Tools like LangGraph and CrewAI let you build coordination into your own app. But that works best when every agent lives in the same app, built by the same team. The whole point of the new protocols is agents from <em>different</em> companies working together. Once that happens, coordination can't live inside any one company's code.</p>
+<p><strong>"Signals can be gamed."</strong> Absolutely. An agent that learns "calling out 'done' ends my task" might start calling out "done" early. A cook who wants to go home could do the same thing. That's one reason the paper's focus on preserving disagreement matters: a lone voice saying "wait, something's off" shouldn't get averaged away. Good signaling has to treat that voice as a feature, not noise.</p>
+<p><strong>"Thresholds are fragile."</strong> Also true. The right line for "research is done" will differ between a quick question and a legal review. Setting those lines well is real work, and it's still an open problem. I'm working on a theory for setting and testing thresholds in a changing environment like this. Look for a future post on this.</p>
+<p>None of these kills the idea. They're the to-do list.</p>
+<h2 id="the-clock-is-running">The clock is running</h2>
+<p>The paper's authors estimate this gap could start closing in the next six to twelve months, most likely through add-ons to Google's A2A protocol. That's both good news and a warning. Standards tend to get set by whoever shows up first with something that works, not by whoever has the best idea. I can also see a lot of 'standards' being published in hopes to control the decision plane. <em>"The nice thing about standards is that you have so many to choose from."</em>  - Andrew Tanenbaum</p>
+<p>So here's my bet. The next big fight in AI agents won't be over who gets through the front door. It'll be over who builds the call-outs. Will that layer look like a parliament, a kitchen, or (most likely) some mix of both?</p>
+<p>I'm betting on the kitchen. Not because meetings are bad, but because most of the time a team doesn't need to vote. It needs to hear "behind!" and get out of the way.</p>
+<hr>
+<p><em>Quorum Signaling is a concept I've been developing here on Drifting Signals. If you want the deeper version, start with</em> <a href="/ideas/when-ai-agents-need-to-know-when/">The Case for Quorum Signaling</a><em>.</em></p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Kang &amp; Diponegoro, <a href="https://arxiv.org/pdf/2606.31498">Governance Gaps in Agent Interoperability Protocols</a> (arXiv, June 2026)</li>
+<li><a href="https://datafloq.com/meta-and-sierras-personal-agent-protocol-starts-with-login-not-payments/">Meta and Sierra's Personal Agent Protocol starts with login, not payments</a> (Datafloq)</li>
+<li><a href="https://ecommerceparadise.com/personal-agent-protocol-shopify-stripe/">Shopify and Stripe join Meta's Personal Agent Protocol</a></li>
+<li><a href="https://pickaxe.co/post/mcp-vs-a2a-protocol">MCP vs A2A protocol</a> (Pickaxe)</li>
+</ul>
+  </div>
+
+  
+
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="byline">
+  By
+  <a href="https://www.linkedin.com/in/brendenportolese/" rel="me noopener noreferrer">Brenden Portolese</a>
+</p>
+    </div>
+  </footer>
+  <script src="/static/js/theme.js" defer></script>
+</body>
+</html>
